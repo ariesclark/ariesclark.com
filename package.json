@@ -1,5 +1,6 @@
 {
   "private": true,
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "lint": "eslint ./src/**/*.{ts,tsx} --fix",
     "dev": "next dev",
