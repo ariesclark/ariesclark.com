@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@altarhost/eslint-config': ^0.2.18
+  '@types/lodash': ^4.14.178
   '@types/node': 17.0.4
   '@types/react': 17.0.38
   '@types/react-dom': ^17.0.11
@@ -17,6 +18,7 @@ specifiers:
   eslint-plugin-jsx-a11y: ^6.5.1
   eslint-plugin-react: ^7.28.0
   eslint-plugin-react-hooks: ^4.3.0
+  lodash: ^4.17.21
   next: latest
   postcss: ^8.4.6
   prettier: ^2.5.1
@@ -30,12 +32,14 @@ specifiers:
   vercel: ^23.1.2
 
 dependencies:
+  lodash: 4.17.21
   next: 12.1.0_9ee0ffa523ab8c6f438140d2dc1876c7
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
   '@altarhost/eslint-config': 0.2.18_a1c52340a771a22d5964196a3af73c14
+  '@types/lodash': 4.14.178
   '@types/node': 17.0.4
   '@types/react': 17.0.38
   '@types/react-dom': 17.0.11
@@ -319,6 +323,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
+    dev: true
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: true
 
   /@types/node/17.0.4:
@@ -1924,6 +1932,10 @@ packages:
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
+
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
