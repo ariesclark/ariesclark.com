@@ -20,7 +20,7 @@ export const CallToAction: React.FC = function () {
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pellentesque tempus diam,
 					id scelerisque quam sodales at. Pellentesque tincidunt condimentum libero, vitae tempor quam ullamcorper nec.
 				</p>
-				<div className="w-64">
+				<div className="w-64 h-10">
 					<ScrollableLink href="#about">
 						<Button name="Learn more" />
 					</ScrollableLink>
