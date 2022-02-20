@@ -37,7 +37,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             // https://csp-evaluator.withgoogle.com/
-            value: "default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' https: data:; object-src 'none'; require-trusted-types-for 'script'"
+            value: "default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' https: data:; object-src 'none'"
           }                                                                      
         ],
       },
