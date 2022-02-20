@@ -40,7 +40,7 @@ export default function RootIndexPage () {
 					<BackgroundCanvas
 						canvasSize={windowSize}
 						offsetSpeed={1.5}
-						stepSize={48*2}
+						stepSize={48 * 2}
 					/>
 				</div>
 				<div className="absolute top-0 z-20 flex flex-col w-full transition-all text-neutral-200">
