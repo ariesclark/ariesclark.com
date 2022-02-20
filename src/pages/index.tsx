@@ -149,7 +149,7 @@ export default function RootIndexPage () {
 									<p className="max-w-md">Proin pulvinar venenatis purus eget sagittis. Nulla vitae tortor non enim tempor mattis vel eget libero. Cras commodo ultricies metus, in vulputate turpis egestas quis. Donec sit amet ipsum ut est consectetur accumsan. Aliquam a finibus metus. Donec quis porttitor est, et fermentum nibh. Morbi finibus lectus tortor, sit amet scelerisque velit fermentum vitae.</p>
 									<div className="w-48 h-10">
 										<Link href="mailto:me@ariesclark.com" passHref>
-											<Button name="Email me" />
+											<a><Button name="Email me" /></a>
 										</Link>
 									</div>
 								</section>
