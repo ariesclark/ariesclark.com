@@ -1,5 +1,13 @@
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
 /** @type {import("next").NextConfig} */
-module.exports = {
+module.exports = withMDX({
   reactStrictMode: true,
   headers: async () => {
     return [
@@ -43,4 +51,4 @@ module.exports = {
       },
     ]
   }
-}
+})

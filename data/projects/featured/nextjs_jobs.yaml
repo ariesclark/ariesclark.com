@@ -1,0 +1,32 @@
+name: Next.js job board
+image: "/images/nextjs_jobs.png"
+href: "https://nextjs-jobs-rubybb.vercel.app/"
+description: >
+  After joining the official [Next.js discord](https://discord.gg/PRBZDsMHnH), I was informed about the monthly GitHub Discussion for posting Next.js job requests. Intrugied by the way they're using GitHub Discussions, I decided to smash open VS Code to design and implement an interface for all this lovely data made publicly available in a somewhat neat format.
+keywords:
+  -
+    name: React
+    href: "https://reactjs.org/"
+  -
+    name: Next.js
+    href: "https://nextjs.org/"
+  -
+    name: Tailwind.css
+    href: "https://tailwindcss.com/"
+  -
+    name: GitHub API
+    href: "https://docs.github.com/en/graphql"
+  -
+    name: GraphQL
+    href: "https://graphql.org/"
+  -
+    name: TypeScript
+    href: "https://typescriptlang.org/"
+  -
+    name: Vercel
+    href: "https://vercel.com/"
+links:
+  -
+    name: GitHub
+    href: "https://github.com/ariesclark/nextjs-jobs"
+    icon: "GitHub"

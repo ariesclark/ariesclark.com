@@ -1,22 +1,59 @@
+import fs from "fs/promises";
+import path from "path";
+
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { GetStaticProps } from "next";
+import { glob } from "glob";
+import YAML from "yaml";
 
 import { Button } from "../components/Button";
 import { CallToAction } from "../components/CallToAction";
 import { BackgroundCanvas } from "../components/Canvas";
-import { FeaturedProject } from "../components/FeaturedProject";
-import { FixedSidebar } from "../components/FixedSidebar";
+import { FeaturedProject, FeaturedProjectProps } from "../components/FeaturedProject";
+import { FixedSidebar, SocialDescriptor } from "../components/FixedSidebar";
 import { Header } from "../components/Header";
-import { IconGitHub } from "../components/icons/GitHub";
 import { useWindowSize } from "../lib/useWindowSize";
 import ImageSelf from "../../public/images/self.jpg";
 import ImageCover from "../../public/images/cover.jpg";
-import ImagePortfolioScreenshot from "../../public/images/portfolio_screenshot.png";
-import ImageNextjsJobsScreenshot from "../../public/images/nextjs_jobs_screenshot.png";
 
-export default function RootIndexPage () {
+interface RootIndexPageProps {
+	paths: string[],
+	content: {
+		[key: string]: {
+			[key: string]: any
+		}
+	}
+}
+
+export const getStaticProps: GetStaticProps<RootIndexPageProps> = async function () {
+	const paths = glob.sync("**/*.yaml", { cwd: "./data" });
+	const content: RootIndexPageProps["content"] = {};
+
+	for (let i = 0; i < paths.length; i += 1) {
+		const relativePath = paths[i];
+		const group = path.dirname(relativePath);
+		const name = path.basename(relativePath, ".yaml");
+
+		const fileContent = await fs.readFile(path.resolve("./data", relativePath), "utf-8");
+		const yamlContent = YAML.parse(fileContent);
+
+		content[group] ??= {};
+		content[group][name] = yamlContent;
+	}
+
+	return {
+		props: {
+			paths,
+			content
+		}
+	};
+};
+
+export default function RootIndexPage (props: RootIndexPageProps) {
 	const windowSize = useWindowSize();
+	const { content } = props;
 
 	return (
 		<>
@@ -25,7 +62,7 @@ export default function RootIndexPage () {
 				<meta
 					property="og:description"
 					content="Vestibulum feugiat mollis dictum.
-				Sed volutpat quam sit amet risus accumsan posuere.Duis placerat ut odio eu venenatis.
+				Sed volutpat quam sit amet risus accumsan posuere. Duis placerat ut odio eu venenatis.
 				Nulla mauris elit, fermentum nec dui et, tristique aliquam turpis."
 				/>
 				<meta property="og:title" content="Aries Clark" />
@@ -45,7 +82,7 @@ export default function RootIndexPage () {
 				</div>
 				<div className="absolute top-0 z-20 flex flex-col w-full transition-all text-neutral-200">
 					<Header />
-					<FixedSidebar />
+					<FixedSidebar items={content.generic.socials as SocialDescriptor[]} />
 					<div className="sm:ml-16">
 						<div className="container flex-grow px-8 mx-auto">
 							<CallToAction />
@@ -94,45 +131,9 @@ export default function RootIndexPage () {
 										<span className="font-inter">A few creations</span>
 									</h4>
 									<div className="flex flex-col space-y-32">
-										<FeaturedProject
-											name="Personal portfolio (you're here)"
-											description="Morbi sit amet vulputate est, aliquam consectetur mi.
-										Morbi laoreet eget massa eget molestie. Class aptent taciti sociosqu ad
-										litora torquent per conubia nostra, per inceptos himenaeos."
-											href="https://ariesclark.com/"
-											image={ImagePortfolioScreenshot}
-											keywords={[
-												{ name: "React", href: "https://reactjs.org/" },
-												{ name: "Next.js", href: "https://nextjs.org/" },
-												{ name: "Tailwind.css", href: "https://tailwindcss.com/" },
-												{ name: "TypeScript", href: "https://typescriptlang.org/" },
-												{ name: "Vercel", href: "https://vercel.com/" },
-											]}
-											links={[
-												{ name: "GitHub", href: "https://github.com/ariesclark/ariesclark.com", icon: IconGitHub }
-											]}
-											alignRight
-										/>
-										<FeaturedProject
-											name="Next.js job board"
-											description="Morbi sit amet vulputate est, aliquam consectetur mi.
-										Morbi laoreet eget massa eget molestie. Class aptent taciti sociosqu ad
-										litora torquent per conubia nostra, per inceptos himenaeos."
-											href="https://nextjs-jobs-rubybb.vercel.app/"
-											image={ImageNextjsJobsScreenshot}
-											keywords={[
-												{ name: "React", href: "https://reactjs.org/" },
-												{ name: "Next.js", href: "https://nextjs.org/" },
-												{ name: "Tailwind.css", href: "https://tailwindcss.com/" },
-												{ name: "GitHub API", href: "https://docs.github.com/en/graphql" },
-												{ name: "GraphQL", href: "https://graphql.org/" },
-												{ name: "TypeScript", href: "https://typescriptlang.org/" },
-												{ name: "Vercel", href: "https://vercel.com/" },
-											]}
-											links={[
-												{ name: "GitHub", href: "https://github.com/ariesclark/nextjs-jobs", icon: IconGitHub }
-											]}
-										/>
+										{Object.entries<FeaturedProjectProps>(content["projects/featured"]).map(([key, item], index) => {
+											return (<FeaturedProject key={key} {...item} alignRight={index % 2 === 0} />);
+										})}
 									</div>
 								</section>
 								<section id="contact" className="flex flex-col max-w-4xl pt-8 mx-auto space-y-8 sm:pt-32">
