@@ -39,7 +39,7 @@ export const BackgroundCanvas: React.VFC<BackgroundCanvasProps> = function (prop
 	const offsetMouse = useRef<Vector2D>(new Vector2D());
 	const viewport = useRef<Rectangle>(new Rectangle());
 
-	const scaledCanvasSize = useMemo(() => canvasSize.scale(2, 2, true), [canvasSize])
+	const scaledCanvasSize = useMemo(() => canvasSize.scale(2, 2, true), [canvasSize]);
 
 	useEffect(() => {
 		points.current = [];

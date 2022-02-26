@@ -17,6 +17,7 @@ import { Header } from "../components/Header";
 import { useWindowSize } from "../lib/useWindowSize";
 import ImageSelf from "../../public/images/self.jpg";
 import ImageCover from "../../public/images/cover.jpg";
+import { kv } from "../lib/cloudflare";
 
 interface RootIndexPageProps {
 	paths: string[],
@@ -147,7 +148,16 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 										</div>
 									</div>
 
-									<p className="max-w-md">Proin pulvinar venenatis purus eget sagittis. Nulla vitae tortor non enim tempor mattis vel eget libero. Cras commodo ultricies metus, in vulputate turpis egestas quis. Donec sit amet ipsum ut est consectetur accumsan. Aliquam a finibus metus. Donec quis porttitor est, et fermentum nibh. Morbi finibus lectus tortor, sit amet scelerisque velit fermentum vitae.</p>
+									<p className="max-w-md">
+										I&apos;m always open for an opportunity.
+										Curabitur blandit rhoncus lacus, sed pretium felis suscipit vitae.
+										In cursus hendrerit nibh, vitae imperdiet sapien commodo sit amet.
+										Curabitur id felis a lorem sodales consectetur sit amet non augue.
+										Praesent a quam ac ante consequat feugiat in ut tellus. Duis gravida bibendum cursus.
+										Pellentesque blandit sapien tincidunt mauris sagittis euismod.
+										Aenean ante neque, vestibulum in tortor ac,
+										convallis consequat orci.
+									</p>
 									<div className="w-48 h-10">
 										<Link href="mailto:me@ariesclark.com" passHref>
 											<a><Button name="Email me" /></a>
