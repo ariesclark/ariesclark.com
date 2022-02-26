@@ -7,6 +7,7 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import { glob } from "glob";
 import YAML from "yaml";
+import { kv } from "cloudflare-kv-storage";
 
 import { Button } from "../components/Button";
 import { CallToAction } from "../components/CallToAction";
@@ -17,7 +18,6 @@ import { Header } from "../components/Header";
 import { useWindowSize } from "../lib/useWindowSize";
 import ImageSelf from "../../public/images/self.jpg";
 import ImageCover from "../../public/images/cover.jpg";
-import { kv } from "../lib/cloudflare";
 
 interface RootIndexPageProps {
 	paths: string[],
@@ -27,6 +27,8 @@ interface RootIndexPageProps {
 		}
 	}
 }
+
+kv.list().then(console.log);
 
 export const getStaticProps: GetStaticProps<RootIndexPageProps> = async function () {
 	const paths = glob.sync("**/*.yaml", { cwd: "./data" });
