@@ -5,30 +5,3 @@
 * {
     @apply transition-all;
 }
-
-$bg-url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAuklEQVRoQ+2a0Q2EIADFYAVvRRIdCkc8V0Bc4SVNxJT/vkDrp3Xfj3GevWzbr6x6rutf6rz8aK2V3vuq7yjP/essMZ4XrX58yNsKWsQikAE/LUhsPGuRWB0EWgQSG89aJFYHgRaBxMazFonVQaBFILHxrEVidRBoEUhsPGuRWB0EWgQSG89aJFYHgRaBxMazFonVQaBFILHxrEVidRBoEUhsPGuRWB0EWgQSG89aJFYHgd8pMgV94n+tG98AzWXp7sfhAAAAAElFTkSuQmCC";
-$bg-width: 50px;
-$bg-height: 50px;
-
-
-@keyframes bg-scrolling-reverse {
-  0% { 
-    background-position: $bg-width 0px;
-  }
-  100% { 
-    background-position: $bg-width -50px;
-  }
-}
-
-@keyframes bg-scrolling {
-  0% { 
-    background-position: $bg-width $bg-height;
-  }
-}
-
-body {
-  background: url($bg-url) repeat 0 0;
-  // background-color: black;
-  animation: bg-scrolling-reverse 1.5s infinite;
-  animation-timing-function: linear;
-}

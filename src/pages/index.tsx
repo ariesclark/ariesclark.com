@@ -28,8 +28,6 @@ interface RootIndexPageProps {
 	}
 }
 
-kv.list().then(console.log);
-
 export const getStaticProps: GetStaticProps<RootIndexPageProps> = async function () {
 	const paths = glob.sync("**/*.yaml", { cwd: "./data" });
 	const content: RootIndexPageProps["content"] = {};
@@ -75,7 +73,7 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 				<meta name="twitter:site" content="@ariesrclark" />
 				<meta name="twitter:creator" content="@ariesrclark" />
 			</Head>
-			<div className="relative h-screen overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-transparent">
+			<div className="relative h-screen overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-transparent bg-neutral-900">
 				<div className="fixed">
 					<BackgroundCanvas
 						canvasSize={windowSize}
@@ -151,14 +149,8 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 									</div>
 
 									<p className="max-w-md">
-										I&apos;m always open for an opportunity.
-										Curabitur blandit rhoncus lacus, sed pretium felis suscipit vitae.
-										In cursus hendrerit nibh, vitae imperdiet sapien commodo sit amet.
-										Curabitur id felis a lorem sodales consectetur sit amet non augue.
-										Praesent a quam ac ante consequat feugiat in ut tellus. Duis gravida bibendum cursus.
-										Pellentesque blandit sapien tincidunt mauris sagittis euismod.
-										Aenean ante neque, vestibulum in tortor ac,
-										convallis consequat orci.
+										I'm always open for an opportunity.<br/>
+										Take the chance and message me.
 									</p>
 									<div className="w-48 h-10">
 										<Link href="mailto:me@ariesclark.com" passHref>
