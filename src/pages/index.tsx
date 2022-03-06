@@ -8,6 +8,8 @@ import { GetStaticProps } from "next";
 import { glob } from "glob";
 import YAML from "yaml";
 import { kv } from "cloudflare-kv-storage";
+import ms from "ms";
+import { useEffect, useState } from "react";
 
 import { Button } from "../components/Button";
 import { CallToAction } from "../components/CallToAction";
@@ -27,6 +29,9 @@ interface RootIndexPageProps {
 		}
 	}
 }
+
+const ONE_YEAR_IN_MILLISECONDS = 3.154e+10;
+const BIRTH_DATE = new Date(2002, 4, 29);
 
 export const getStaticProps: GetStaticProps<RootIndexPageProps> = async function () {
 	const paths = glob.sync("**/*.yaml", { cwd: "./data" });
@@ -56,16 +61,14 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 	const windowSize = useWindowSize();
 	const { content } = props;
 
+	const now = Date.now();
+	const age = Math.floor((now - BIRTH_DATE.getTime()) / ONE_YEAR_IN_MILLISECONDS);
+
 	return (
 		<>
 			<Head>
 				<title>Aries Clark</title>
-				<meta
-					property="og:description"
-					content="Vestibulum feugiat mollis dictum.
-				Sed volutpat quam sit amet risus accumsan posuere. Duis placerat ut odio eu venenatis.
-				Nulla mauris elit, fermentum nec dui et, tristique aliquam turpis."
-				/>
+				<meta property="og:description" content="Canadian software engineer" />
 				<meta property="og:title" content="Aries Clark" />
 				<meta property="og:site_name" content={process.env.NEXT_PUBLIC_DOMAIN} />
 				<meta property="og:image" content={process.env.NEXT_PUBLIC_URI + ImageCover.src} />
@@ -95,26 +98,37 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 									</h4>
 									<div className="flex flex-wrap justify-between gap-16">
 										<div className="flex flex-col max-w-md space-y-4">
-											<p>Vestibulum feugiat mollis dictum. Sed volutpat quam sit amet risus accumsan posuere.
-												Duis placerat ut odio eu venenatis. Nulla mauris elit, fermentum nec dui et,
-												tristique aliquam turpis. Vivamus nibh odio, molestie in pharetra sit amet,
-												convallis et justo. Nunc lorem libero, tempor eu magna at, pretium ultricies diam.
-												Quisque ullamcorper elit nec erat venenatis congue.
+											<p>I&apos;m Aries, a {age} year old Canadian citizen with a burning passion for
+												software development and improving the state of the web.
 											</p>
-											<p>Curabitur blandit rhoncus lacus, sed pretium felis suscipit vitae.
-												In cursus hendrerit nibh, vitae imperdiet sapien commodo sit amet.
-												Curabitur id felis a lorem sodales consectetur sit amet non augue.
-												Praesent a quam ac ante consequat feugiat in ut tellus. Duis gravida bibendum cursus.
-												Pellentesque blandit sapien tincidunt mauris sagittis euismod.
-												Aenean ante neque, vestibulum in tortor ac,
-												convallis consequat orci.
+											<p>
+												I started software development when I was quite young — 13 years old in fact. In
+												those {Math.floor((now - new Date(2016, 0, 1).getTime()) / ONE_YEAR_IN_MILLISECONDS)} years
+												I&apos;ve done so many different things ranging from developing Minecraft mods in Java,
+												writing quite a few horrible PHP websites, and all the way to where I am now.
 											</p>
-											<ul className="flex flex-wrap text-sm list-inside gap-x-8 gap-y-2 list-[square]">
-												<li>Vestibulum nec felis justo</li>
-												<li>Integer gravida enim non</li>
-												<li>Vivamus venenatis nisi urna</li>
-												<li>Aenean viverra pulvinar</li>
-												<li>Proin rhoncus dignissim</li>
+											<p>
+												As of late, my focus has been on using modern languages like TypeScript to create web based
+												applications and services with React and Next.js among other libraries.
+											</p>
+											<p>Here are a few technologies I&apos;ve been working with recently:
+											</p>
+											<ul className="text-sm list-inside list-[square] grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2">
+												<li>
+													TypeScript <span className="text-xs text-neutral-300"> — A strongly typed programming language that builds on JavaScript.</span>
+												</li>
+												<li>
+													Next.js <span className="text-xs text-neutral-300"> — A framework for server-side rendering and generating static websites using React and Node.js.</span>
+												</li>
+												<li>
+													React <span className="text-xs text-neutral-300"> — A JavaScript library for building user interfaces.</span>
+												</li>
+												<li>
+													Node.js <span className="text-xs text-neutral-300"> — A runtime built on Chrome&apos;s V8 JavaScript engine.</span>
+												</li>
+												<li>
+													Tailwind CSS <span className="text-xs text-neutral-300">— A utility-first CSS framework for rapid UI development.</span>
+												</li>
 											</ul>
 										</div>
 										<div className="flex-shrink-0">
@@ -148,9 +162,9 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 										</div>
 									</div>
 
-									<p className="max-w-md">
-										I'm always open for an opportunity.<br/>
-										Take the chance and message me.
+									<p className="max-w-md sm:w-96">
+										I&apos;m always open for an opportunity. Whether you have a question or just want to say hi,
+										I&apos;ll try my best to get back to you! Take the chance and message me.
 									</p>
 									<div className="w-48 h-10">
 										<Link href="mailto:me@ariesclark.com" passHref>
@@ -169,7 +183,7 @@ export default function RootIndexPage (props: RootIndexPageProps) {
 								</span>
 								<span className="mx-auto text-neutral-300">
 									with inspiration from
-									<Link href="https://brittanychiang.com">
+									<Link href="https://github.com/bchiang7">
 										<a target="_blank" className="ml-1 hover:underline">
 											Brittany Chiang
 										</a>

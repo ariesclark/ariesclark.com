@@ -1,4 +1,5 @@
 import { Button } from "./Button";
+import { CanadaFlag } from "./CanadaFlag";
 import { ScrollableLink } from "./ScrollableLink";
 
 export const CallToAction: React.FC = function () {
@@ -12,13 +13,17 @@ export const CallToAction: React.FC = function () {
 					<h1 className="text-5xl font-bold sm:text-7xl md:text-8xl font-inter">
 						Aries Clark.
 					</h1>
-					<h2 className="px-4 py-2 text-2xl font-bold text-black bg-red-500 sm:text-5xl md:text-6xl font-inter w-fit">
-						Software Engineer
-					</h2>
+					<div className="flex space-x-8">
+						<h2 className="flex-none px-4 py-2 text-2xl font-bold text-black bg-red-500 rounded h-fit sm:text-5xl md:text-6xl font-inter w-fit">
+							Software Engineer
+						</h2>
+						<CanadaFlag className="w-16 my-auto rounded sm:w-32" />
+					</div>
+
 				</div>
 				<p className="max-w-lg">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pellentesque tempus diam,
-					id scelerisque quam sodales at. Pellentesque tincidunt condimentum libero, vitae tempor quam ullamcorper nec.
+					I&apos;m a proud Canadian software engineer with a passion for developing (and occasionally designing) products and
+					services that change the way we look at the ever expanding internet.
 				</p>
 				<div className="w-64 h-10">
 					<ScrollableLink href="#about">
