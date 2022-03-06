@@ -22,7 +22,7 @@ export const Header: React.FC = function () {
 			<div className="container flex flex-col px-8 py-8 mx-auto font-mono text-sm md:flex-row ">
 				<div className="flex-grow" />
 				<div className="flex flex-col gap-x-16 gap-y-4 md:flex-row">
-					<ul className="flex flex-wrap justify-between gap-x-10 list-[decimal-leading-zero] list-inside">
+					<ul className="flex flex-wrap justify-between list-inside gap-x-10">
 						<HeaderItem label="About" href="#about" />
 						<HeaderItem label="Experience" href="#experience" />
 						<HeaderItem label="Work" href="#projects" />

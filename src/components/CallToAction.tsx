@@ -14,7 +14,7 @@ export const CallToAction: React.FC = function () {
 						Aries Clark.
 					</h1>
 					<div className="flex space-x-8">
-						<h2 className="flex-none px-4 py-2 text-2xl font-bold text-black bg-red-500 rounded h-fit sm:text-5xl md:text-6xl font-inter w-fit">
+						<h2 className="flex-none px-4 py-2 text-2xl font-bold bg-red-500 rounded text-neutral-900 h-fit sm:text-5xl md:text-6xl font-inter w-fit">
 							Software Engineer
 						</h2>
 						<CanadaFlag className="w-16 my-auto rounded sm:w-32" />
