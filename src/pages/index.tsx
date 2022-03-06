@@ -7,9 +7,6 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import { glob } from "glob";
 import YAML from "yaml";
-import { kv } from "cloudflare-kv-storage";
-import ms from "ms";
-import { useEffect, useState } from "react";
 
 import { Button } from "../components/Button";
 import { CallToAction } from "../components/CallToAction";
