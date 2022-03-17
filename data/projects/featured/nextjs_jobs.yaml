@@ -1,6 +1,6 @@
 name: Next.js job board
 image: "/images/nextjs_jobs.png"
-href: "https://nextjs-jobs-ariesclark.com"
+href: "https://nextjs-jobs.ariesclark.com"
 description: >
   After joining the official [Next.js discord](https://discord.gg/PRBZDsMHnH), I was informed about the monthly GitHub Discussion for posting Next.js job requests. Intrigued by the way they're using GitHub Discussions, I decided to smash open VS Code to design and implement an interface for all this lovely data made publicly available in a somewhat neat format.
 keywords:
