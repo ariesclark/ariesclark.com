@@ -9,7 +9,7 @@ import type { AppProps } from "next/app";
 let played: boolean = false;
 export default function App ({ Component, pageProps }: AppProps) {
 	useEffect(() => {
-		if (random.range(0, 1) === 1) {
+		if (random.range(0, 100) <= 25) {
 			console.log("Huh, what was that?");
 
 			document.addEventListener("click", () => {
