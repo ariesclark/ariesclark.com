@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ariesclark/utils": "^1.0.0",
     "cloudflare-kv-storage": "^0.0.4",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
