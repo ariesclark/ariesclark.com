@@ -14,7 +14,7 @@ export const iconMap = {
 	Twitter: IconTwitter
 } as const;
 
-export function getIcon (name: string): typeof iconMap[keyof typeof iconMap] {
+export function getIcon(name: string): typeof iconMap[keyof typeof iconMap] {
 	if (!iconMap[name as keyof typeof iconMap]) throw new Error(`Unknown icon: ${name}`);
 	return iconMap[name as keyof typeof iconMap];
 }

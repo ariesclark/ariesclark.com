@@ -4,17 +4,21 @@ import omit from "lodash/omit";
 import { IconArrowRight } from "./icons/ArrowRight";
 
 export type ButtonProps = Omit<HTMLAttributes<HTMLButtonElement>, "className"> & {
-	name: string,
-	icon?: React.ReactElement
+	name: string;
+	icon?: React.ReactElement;
 };
 
 export const Button: React.VFC<ButtonProps> = function (props) {
 	const { name, icon } = props;
 
 	return (
-		<button {...omit(props, ["name", "icon"])} type="button" className="flex justify-between w-full px-4 py-2 text-black bg-white rounded hover:brightness-90 hover:bg-red-400 group">
+		<button
+			{...omit(props, ["name", "icon"])}
+			className="group flex justify-between py-2 px-4 w-full text-black bg-white hover:bg-red-400 rounded hover:brightness-90"
+			type="button"
+		>
 			<span>{name}</span>
-			{icon || (<IconArrowRight className="h-4 my-auto" />)}
+			{icon || <IconArrowRight className="my-auto h-4" />}
 		</button>
 	);
 };

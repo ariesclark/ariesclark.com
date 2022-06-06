@@ -1,16 +1,17 @@
 import { Button } from "./Button";
 import { ScrollableLink } from "./ScrollableLink";
 
-type HeaderItemProps = { label: string, href: string };
+interface HeaderItemProps {
+	label: string;
+	href: string;
+}
 const HeaderItem: React.VFC<HeaderItemProps> = function (props) {
 	const { label, href } = props;
 
 	return (
-		<li className="my-auto border border-transparent rounded marker:text-red-400">
+		<li className="my-auto marker:text-red-400 rounded border border-transparent">
 			<ScrollableLink href={href}>
-				<span className="text-neutral-200 hover:text-red-400 hover:underline">
-					{label}
-				</span>
+				<span className="text-neutral-200 hover:text-red-400 hover:underline">{label}</span>
 			</ScrollableLink>
 		</li>
 	);
@@ -19,16 +20,16 @@ const HeaderItem: React.VFC<HeaderItemProps> = function (props) {
 export const Header: React.FC = function () {
 	return (
 		<header className="flex">
-			<div className="container flex flex-col px-8 py-8 mx-auto font-mono text-sm md:flex-row ">
-				<div className="flex-grow" />
+			<div className="container flex flex-col p-8 mx-auto font-mono text-sm md:flex-row">
+				<div className="grow" />
 				<div className="flex flex-col gap-x-16 gap-y-4 md:flex-row">
-					<ul className="flex flex-wrap justify-between list-inside gap-x-10">
-						<HeaderItem label="About" href="#about" />
-						<HeaderItem label="Experience" href="#experience" />
-						<HeaderItem label="Work" href="#projects" />
-						<HeaderItem label="Resume" href="/" />
+					<ul className="flex flex-wrap gap-x-10 justify-between list-inside">
+						<HeaderItem href="#about" label="About" />
+						<HeaderItem href="#experience" label="Experience" />
+						<HeaderItem href="#projects" label="Work" />
+						<HeaderItem href="/" label="Resume" />
 					</ul>
-					<div className="w-full h-10 ml-auto sm:w-32">
+					<div className="ml-auto w-full h-10 sm:w-32">
 						<ScrollableLink href="#contact">
 							<Button name="Contact" />
 						</ScrollableLink>

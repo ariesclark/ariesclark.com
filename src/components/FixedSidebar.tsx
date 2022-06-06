@@ -3,27 +3,26 @@ import Link from "next/link";
 import { getIcon, iconMap } from "./icons";
 
 export interface SocialDescriptor {
-    name: string,
-    href: string,
+	name: string;
+	href: string;
 }
 
-export const FixedSidebar: React.VFC<{ items: SocialDescriptor[] }> = function (props) {
+export const FixedSidebar: React.VFC<{ items: Array<SocialDescriptor> }> = function (props) {
 	const { items } = props;
 
 	return (
-		<aside className="flex items-center px-8 sm:py-8 sm:h-screen sm:fixed">
-			<ul className="flex w-full gap-6 sm:flex-col">
+		<aside className="flex items-center px-8 sm:fixed sm:py-8 sm:h-screen">
+			<ul className="flex gap-6 w-full sm:flex-col">
 				{items.map((descriptor) => {
 					const Icon = getIcon(descriptor.name);
 
 					return (
-						<li key={descriptor.name} className="flex h-full">
+						<li className="flex h-full" key={descriptor.name}>
 							<Link href={descriptor.href}>
-								<a target="_blank" className="my-auto">
-									<Icon className="w-6 hover:scale-150 hover:text-red-400" />
+								<a className="my-auto" target="_blank">
+									<Icon className="w-6 hover:text-red-400 hover:scale-150" />
 								</a>
 							</Link>
-
 						</li>
 					);
 				})}
