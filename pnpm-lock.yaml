@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@ariesclark/eslint-config': ^1.4.0
   '@ariesclark/utils': ^1.0.2
+  '@next/eslint-plugin-next': ^12.1.6
   '@types/glob': ^7.2.0
   '@types/lodash': ^4.14.182
   '@types/ms': ^0.7.31
@@ -45,6 +46,7 @@ dependencies:
 
 devDependencies:
   '@ariesclark/eslint-config': 1.4.0_typescript@4.5.4
+  '@next/eslint-plugin-next': 12.1.6
   '@types/glob': 7.2.0
   '@types/lodash': 4.14.182
   '@types/ms': 0.7.31
@@ -127,6 +129,12 @@ packages:
   /@next/env/12.1.6:
     resolution: {integrity: sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==}
     dev: false
+
+  /@next/eslint-plugin-next/12.1.6:
+    resolution: {integrity: sha512-yNUtJ90NEiYFT6TJnNyofKMPYqirKDwpahcbxBgSIuABwYOdkGwzos1ZkYD51Qf0diYwpQZBeVqElTk7Q2WNqw==}
+    dependencies:
+      glob: 7.1.7
+    dev: true
 
   /@next/swc-android-arm-eabi/12.1.6:
     resolution: {integrity: sha512-BxBr3QAAAXWgk/K7EedvzxJr2dE014mghBSA9iOEAv0bMgF+MRq4PoASjuHi15M2zfowpcRG8XQhMFtxftCleQ==}
@@ -1571,6 +1579,17 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       is-glob: 4.0.3
+    dev: true
+
+  /glob/7.1.7:
+    resolution: {integrity: sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==}
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 3.1.2
+      once: 1.4.0
+      path-is-absolute: 1.0.1
     dev: true
 
   /glob/7.2.3:

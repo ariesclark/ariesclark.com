@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getIcon, iconMap } from "./icons";
+import { getIcon } from "./icons";
 
 export interface SocialDescriptor {
 	name: string;

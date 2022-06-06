@@ -14,14 +14,12 @@ import { BackgroundCanvas } from "../components/Canvas";
 import { FeaturedProject, FeaturedProjectProps } from "../components/FeaturedProject";
 import { FixedSidebar, SocialDescriptor } from "../components/FixedSidebar";
 import { Header } from "../components/Header";
-import { useWindowSize } from "../lib/useWindowSize";
-import ImageSelf from "../../public/images/self.jpg";
-import ImageCover from "../../public/images/cover.jpg";
 
 interface RootIndexPageProps {
 	paths: Array<string>;
 	content: {
 		[key: string]: {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			[key: string]: any;
 		};
 	};
@@ -55,7 +53,6 @@ export const getStaticProps: GetStaticProps<RootIndexPageProps> = async function
 };
 
 export default function RootIndexPage(props: RootIndexPageProps) {
-	const { size: windowSize } = useWindowSize();
 	const { content } = props;
 
 	const now = Date.now();
@@ -68,11 +65,12 @@ export default function RootIndexPage(props: RootIndexPageProps) {
 				<meta content="Canadian software engineer" property="og:description" />
 				<meta content="Aries Clark" property="og:title" />
 				<meta content={process.env.NEXT_PUBLIC_DOMAIN} property="og:site_name" />
-				<meta content={process.env.NEXT_PUBLIC_URI + ImageCover.src} property="og:image" />
+				<meta content={process.env.NEXT_PUBLIC_URI + "/images/cover.jpg"} property="og:image" />
 				<meta content="summary_large_image" name="twitter:card" />
 				<meta content="@ariesrclark" name="twitter:site" />
 				<meta content="@ariesrclark" name="twitter:creator" />
 			</Head>
+			{/* eslint-disable-next-line tailwindcss/no-custom-classname */}
 			<div className="overflow-x-hidden overflow-y-auto relative h-screen bg-neutral-900 scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-transparent">
 				<div className="fixed">
 					<BackgroundCanvas />
@@ -161,7 +159,7 @@ export default function RootIndexPage(props: RootIndexPageProps) {
 													className="block object-cover object-center absolute z-10 h-full rounded group-hover:contrast-100 grayscale group-hover:grayscale-0"
 													placeholder="blur"
 													quality={100}
-													src={ImageSelf}
+													src={"/images/self.jpg"}
 												/>
 											</div>
 										</div>
