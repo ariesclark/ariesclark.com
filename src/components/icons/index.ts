@@ -10,7 +10,7 @@ export const iconMap = {
 	ExternalLink: IconExternalLink,
 	GitHub: IconGitHub,
 	LinkedIn: IconLinkedIn,
-	Mail: IconMail,
+	Email: IconMail,
 	Twitter: IconTwitter
 } as const;
 

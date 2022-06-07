@@ -1,5 +1,5 @@
 import { Button } from "./Button";
-import { ScrollableLink } from "./ScrollableLink";
+import { Link } from "./Link";
 
 interface HeaderItemProps {
 	label: string;
@@ -10,9 +10,9 @@ const HeaderItem: React.VFC<HeaderItemProps> = function (props) {
 
 	return (
 		<li className="my-auto marker:text-red-400 rounded border border-transparent">
-			<ScrollableLink href={href}>
+			<Link href={href}>
 				<span className="text-neutral-200 hover:text-red-400 hover:underline">{label}</span>
-			</ScrollableLink>
+			</Link>
 		</li>
 	);
 };
@@ -30,9 +30,9 @@ export const Header: React.FC = function () {
 						<HeaderItem href="/" label="Resume" />
 					</ul>
 					<div className="ml-auto w-full h-10 sm:w-32">
-						<ScrollableLink href="#contact">
+						<Link href="#contact">
 							<Button name="Contact" />
-						</ScrollableLink>
+						</Link>
 					</div>
 				</div>
 			</div>
