@@ -27,7 +27,7 @@ export const Header: React.FC = function () {
 						<HeaderItem href="#about" label="About" />
 						<HeaderItem href="#experience" label="Experience" />
 						<HeaderItem href="#projects" label="Work" />
-						<HeaderItem href="/" label="Resume" />
+						<HeaderItem href="/resume" label="Resume" />
 					</ul>
 					<div className="ml-auto w-full h-10 sm:w-32">
 						<Link href="#contact">

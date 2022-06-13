@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import omit from "lodash/omit";
 import { twMerge } from "tailwind-merge";
+
+import { omit } from "../lib/omit";
 
 export const OutlinedImage: React.FC<
 	React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>

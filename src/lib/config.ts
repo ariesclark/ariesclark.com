@@ -78,7 +78,7 @@ export const socials = [
 	},
 	{
 		name: "LinkedIn",
-		href: "https://www.linkedin.com/in/ariesclark"
+		href: "https://linkedin.com/in/ariesclark"
 	},
 	{
 		name: "Twitter",
@@ -109,7 +109,7 @@ that gives a non-intrusive, seamless secret management experience. `
 		href: "/images/gone.png",
 		type: "Full Time",
 		title: "Founder, Software Engineer",
-		from: new Date("December 4, 2021"),
+		from: new Date("December 4, 2020"),
 		to: new Date("February 2, 2022"),
 		description: `
 I had tried to start my own hosting company, Altar Host, and I wrote software 

@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from "next/head";
-
 import { Button } from "../components/Button";
 import { CallToAction } from "../components/CallToAction";
 import { BackgroundCanvas } from "../components/Canvas";
@@ -15,33 +13,18 @@ import {
 	fctaSummary,
 	fullName,
 	projects,
-	siteDescription,
-	siteTitle,
-	socials,
-	twitterUsername
+	socials
 } from "../lib/config";
 import { Markdown } from "../components/Markdown";
 import { Link } from "../components/Link";
 import { OutlinedImage } from "../components/OutlinedImage";
 import { ExperienceItem } from "../components/ExperienceItem";
+import { CommonHead } from "../components/CommonHead";
 
 export default function RootIndexPage() {
 	return (
 		<>
-			<Head>
-				<title>{siteTitle}</title>
-				<meta content={siteDescription} property="og:description" />
-				<meta content={siteTitle} property="og:title" />
-				<meta content={process.env.NEXT_PUBLIC_DOMAIN} property="og:site_name" />
-				<meta content={process.env.NEXT_PUBLIC_URI + "/images/cover.jpg"} property="og:image" />
-				<meta content="summary_large_image" name="twitter:card" />
-				{twitterUsername && (
-					<>
-						<meta content={`@${twitterUsername}`} name="twitter:site" />
-						<meta content={`@${twitterUsername}`} name="twitter:creator" />
-					</>
-				)}
-			</Head>
+			<CommonHead />
 			{/* eslint-disable-next-line tailwindcss/no-custom-classname */}
 			<div className="overflow-x-hidden overflow-y-auto relative h-screen bg-neutral-900 scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-transparent">
 				<div className="fixed">

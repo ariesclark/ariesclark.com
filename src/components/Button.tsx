@@ -1,5 +1,6 @@
 import { HTMLAttributes } from "react";
-import omit from "lodash/omit";
+
+import { omit } from "../lib/omit";
 
 import { IconArrowRight } from "./icons/ArrowRight";
 

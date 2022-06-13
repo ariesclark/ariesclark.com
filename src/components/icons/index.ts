@@ -6,6 +6,7 @@ import { IconMail } from "./Mail";
 import { IconTwitter } from "./Twitter";
 
 export const iconMap = {
+	Website: IconExternalLink,
 	ArrowRight: IconArrowRight,
 	ExternalLink: IconExternalLink,
 	GitHub: IconGitHub,
