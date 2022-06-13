@@ -8,9 +8,9 @@ export const ProjectResumeItem: React.FC<{ item: typeof projects.featured[number
 	<Link className="flex flex-col gap-2 hover:text-inherit" href={href}>
 		<div className="flex flex-col">
 			<span className="font-bold">{name}</span>
-			<ul className="flex gap-2 text-xs">
+			<ul className="flex flex-wrap gap-x-2 text-xs">
 				{keywords.map((item, idx) => (
-					<li className="" key={idx}>
+					<li className="shrink-0" key={idx}>
 						{item.name}
 					</li>
 				))}

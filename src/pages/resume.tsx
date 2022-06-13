@@ -59,14 +59,14 @@ export const ResumePage: NextPage<InferGetServerSidePropsType<typeof getServerSi
 	return (
 		<>
 			<CommonHead subtitle="Resume" />
-			<div className="flex w-full min-h-screen font-lato bg-neutral-900">
+			<div className="flex overflow-x-hidden w-full min-h-screen font-lato bg-neutral-900">
 				<div className="flex relative flex-col mx-auto w-full max-w-[850px] h-max bg-white">
-					<div className="flex flex-col justify-center items-center h-32 text-neutral-100 bg-zinc-800">
+					<div className="flex flex-col justify-center items-center w-full h-32 text-neutral-100 bg-zinc-800">
 						<h1 className="text-4xl font-light">{fullName}</h1>
 						<span className="text-2xl font-light text-neutral-300">{ctaTitle}</span>
 					</div>
-					<div className="flex w-full">
-						<div className="flex flex-col shrink-0 gap-4 py-4 px-8 w-64 text-right bg-neutral-200">
+					<div className="flex flex-col w-full md:flex-row">
+						<div className="flex flex-col shrink-0 gap-4 py-4 px-8 bg-neutral-200 md:w-64 md:text-right">
 							<div className="flex flex-col gap-2">
 								<span className="text-xl font-medium">Contact information</span>
 								<SocialResumeItem
@@ -83,7 +83,7 @@ export const ResumePage: NextPage<InferGetServerSidePropsType<typeof getServerSi
 								<span className="text-xl font-medium">Recent technologies</span>
 								<ul className="flex flex-col gap-1">
 									{aboutRecentTechnologies.map((item, idx) => (
-										<li className="flex flex-col items-end text-xs" key={idx}>
+										<li className="flex flex-col text-xs md:items-end" key={idx}>
 											<span className="font-semibold">{item.name}</span>
 											<span>{item.description}</span>
 										</li>

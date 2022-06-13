@@ -8,7 +8,7 @@ export const SocialResumeItem: React.FC<{ item: typeof socials[number] }> = ({ i
 
 	return (
 		<Link
-			className="group flex gap-2 justify-end items-center text-sm hover:text-inherit"
+			className="group flex flex-row-reverse gap-2 justify-end items-center text-sm hover:text-inherit md:flex-row"
 			href={item.href}
 		>
 			<span className="shrink-0 text-xs">{prettyUrl(item.href)}</span>
