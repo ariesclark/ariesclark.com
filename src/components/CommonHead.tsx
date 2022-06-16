@@ -8,10 +8,7 @@ export interface CommonHeadProps {
 
 export const CommonHead: React.FC<CommonHeadProps> = (props) => (
 	<Head>
-		<title>
-			{siteTitle}
-			{props.subtitle ? ` – ${props.subtitle}` : ""}
-		</title>
+		<title>{siteTitle + (props.subtitle ? ` – ${props.subtitle}` : "")}</title>
 		<meta content={siteDescription} property="og:description" />
 		<meta content={siteTitle} property="og:title" />
 		<meta content={siteUrl} property="og:site_name" />

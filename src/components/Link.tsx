@@ -1,3 +1,4 @@
+import { omit } from "@ariesclark/utils/dist/objects";
 import NextLink from "next/link";
 import { useCallback, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
@@ -28,7 +29,7 @@ export const Link: React.FC<
 	return (
 		<NextLink href={href}>
 			<a
-				{...props}
+				{...omit(props, ["href"])}
 				className={twMerge("hover:text-red-400 hover:underline", props.className)}
 				tabIndex={props.tabIndex ?? 0}
 				target={props.target || url.origin === siteUrl ? "_self" : "_blank"}

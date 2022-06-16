@@ -1,6 +1,5 @@
-import Link from "next/link";
-
 import { getIcon } from "./icons";
+import { Link } from "./Link";
 
 export interface SocialDescriptor {
 	name: string;
@@ -18,10 +17,8 @@ export const FixedSidebar: React.VFC<{ items: Array<SocialDescriptor> }> = funct
 
 					return (
 						<li className="flex h-full" key={descriptor.name}>
-							<Link href={descriptor.href}>
-								<a className="my-auto" target="_blank">
-									<Icon className="w-6 hover:text-red-400 hover:scale-150" />
-								</a>
+							<Link className="my-auto" href={descriptor.href}>
+								<Icon className="w-6 hover:text-red-400 hover:scale-150" />
 							</Link>
 						</li>
 					);
