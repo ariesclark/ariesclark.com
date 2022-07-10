@@ -32,7 +32,7 @@ export const FeaturedProject: React.VFC<FeaturedProjectProps> = function (props)
 				alignRight ? "flex-row" : "flex-row-reverse"
 			}`}
 		>
-			<Link className="aspect-video w-full lg:shrink-0 lg:w-auto" href={href}>
+			<Link className="aspect-video w-full" href={href}>
 				<OutlinedImage alt={`Screenshot of ${name}`} src={image} />
 			</Link>
 			<div
