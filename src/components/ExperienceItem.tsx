@@ -16,8 +16,12 @@ export const ExperienceItem: React.FC<{
 			</Link>
 			<span className="font-mono text-xs text-neutral-300">
 				{getMonthYear(item.from)} to {item.to ? getMonthYear(item.to) : "present"}
-				{" — "}
-				<span>{item.to ? getYearSince(item.from, item.to) : ""} year(s)</span>
+				{item.to && (
+					<>
+						{" — "}
+						<span>{item.to ? getYearSince(item.from, item.to) : ""} year(s)</span>
+					</>
+				)}
 			</span>
 		</div>
 		<div className="flex gap-4 ">

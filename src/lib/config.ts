@@ -34,10 +34,9 @@ and Next.js, among other tools.
 Here are a few technologies I've been working with recently:
 `;
 
-export const fctaSummary = `
-I'm always up for a challenge.
-Whether you have a query or simply want to say hello, I'll do my best to respond!
-Take a chance and send me a message.`;
+export const fctaSummary = `I enjoy a challenge.
+I'll do my best to answer your message, whether it's a question or just a kind hello!
+Try your luck and message me. `;
 
 export const aboutRecentTechnologies = [
 	{
@@ -96,25 +95,22 @@ export const experience = [
 		logo: "https://avatars.githubusercontent.com/u/101889654?s=200&v=4",
 		href: "https://runes.sh",
 		type: "Full Time",
-		title: "Software Engineer",
+		title: "Senior Software Engineer",
 		from: new Date("April 15, 2022"),
-		to: null,
-		description: `
-I'm currently working on a secure and open-source password manager at Runes Security
-that gives a non-intrusive, seamless secret management experience. `
+		to: new Date("August 15, 2022"),
+		description: `During my time at Runes Security, I worked on developing an open-source password 
+manager that provides a non-intrusive, seamless secret management experience. `
 	},
 	{
 		name: "Altar Host",
 		logo: "/images/altarhost.png",
 		href: "/images/gone.png",
 		type: "Full Time",
-		title: "Founder, Software Engineer",
+		title: "Senior Software Engineer",
 		from: new Date("December 4, 2020"),
 		to: new Date("February 2, 2022"),
-		description: `
-I had tried to start my own hosting company, Altar Host, and I wrote software 
-to manage customer billing, server deployment, and other operations.
-`
+		description: `In order to establish a hosting provider, I independently wrote software to 
+control client billing, server deployment, and other essential business processes. `
 	},
 	{
 		name: "Plox Host",
