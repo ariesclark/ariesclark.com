@@ -30,7 +30,7 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 					<div className="absolute right-8">
 						{print ? (
 							<div className="flex gap-4 items-center text-xs text-right">
-								<span className="max-w-[32ch] text-gray-300">
+								<span className="max-w-[33ch] text-gray-300">
 									This document was last generated on{" "}
 									<span className="font-semibold">
 										{new Date().toLocaleString("en-US", {
