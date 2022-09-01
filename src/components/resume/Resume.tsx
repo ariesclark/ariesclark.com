@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import QRCode from "react-qr-code";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 import { classes } from "../../lib/classes";
 import {
@@ -14,7 +15,6 @@ import {
 } from "../../lib/config";
 import { resumePdfUrl } from "../../lib/resume";
 import { prettyUrl } from "../../lib/url";
-import { Link } from "../Link";
 
 import { ExperienceResumeItem } from "./ExperienceResumeItem";
 import { ProjectResumeItem } from "./ProjectResumeItem";
@@ -30,8 +30,8 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 					<div className="absolute right-8">
 						{print ? (
 							<div className="flex gap-4 items-center text-xs text-right">
-								<span className="max-w-[31ch] text-gray-300">
-									This content was last generated on{" "}
+								<span className="max-w-[32ch] text-gray-300">
+									This document was last generated on{" "}
 									<span className="font-semibold">
 										{new Date().toLocaleString("en-US", {
 											year: "numeric",
@@ -42,19 +42,20 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 									and may be outdated.
 									<br />
 									<br />
-									Scan the code or visit{" "}
-									<Link href={`${siteUrl}/resume`}>{prettyUrl(`${siteUrl}/resume`)}</Link> for the
-									latest available version of this document.
+									<span>
+										Scan the code or visit{" "}
+										<Link href={`${siteUrl}/resume`}>{prettyUrl(`${siteUrl}/resume`)}</Link> for the
+										latest available version of this document.
+									</span>
 								</span>
 								<QRCode className="rounded" size={96} value={`${siteUrl}/resume`} />
 							</div>
 						) : (
-							<Link
-								className="flex gap-4 justify-between items-center py-2 px-3 w-full text-black bg-white rounded"
-								href={resumePdfUrl}
-							>
-								<span>Download Resume</span>
-								<ArrowDownTrayIcon className="w-4 h-4" />
+							<Link href={resumePdfUrl}>
+								<a className="flex gap-4 justify-between items-center py-2 px-3 w-full text-black bg-white rounded">
+									<span>Download Resume</span>
+									<ArrowDownTrayIcon className="w-4 h-4" />
+								</a>
 							</Link>
 						)}
 					</div>
