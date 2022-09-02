@@ -30,8 +30,9 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 					<div className="absolute right-8">
 						{print ? (
 							<div className="flex gap-4 items-center text-xs text-right">
-								<span className="max-w-[33ch] text-gray-300">
-									This document was last generated on{" "}
+								<span className="text-gray-300">
+									This document was last generated on
+									<br />
 									<span className="font-semibold">
 										{new Date().toLocaleString("en-US", {
 											year: "numeric",
@@ -43,9 +44,10 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 									<br />
 									<br />
 									<span>
-										Scan the code or visit{" "}
+										Scan the code or visit <br />
 										<Link href={`${siteUrl}/resume`}>{prettyUrl(`${siteUrl}/resume`)}</Link> for the
-										latest available version of this document.
+										latest <br />
+										available version of this document.
 									</span>
 								</span>
 								<QRCode className="rounded" size={96} value={`${siteUrl}/resume`} />
