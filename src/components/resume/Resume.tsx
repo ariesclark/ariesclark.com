@@ -11,7 +11,8 @@ import {
 	fullName,
 	projects,
 	siteUrl,
-	socials
+	socials,
+	emailHref
 } from "../../lib/config";
 import { resumePdfUrl } from "../../lib/resume";
 import { prettyUrl } from "../../lib/url";
@@ -23,7 +24,7 @@ import { SocialResumeItem } from "./SocialResumeItem";
 export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 	return (
 		<div className="flex overflow-x-hidden w-full min-h-screen font-lato bg-neutral-900">
-			<div className="flex relative flex-col mx-auto w-full max-w-[850px] h-max bg-white">
+			<div className="flex overflow-hidden relative flex-col mx-auto w-full max-w-[850px] h-fit bg-white">
 				<div className="flex flex-col justify-center p-8 w-full h-32 text-neutral-100 bg-zinc-800">
 					<h1 className="text-4xl font-light">{fullName}</h1>
 					<span className="text-2xl font-light text-neutral-300">{ctaTitle}</span>
@@ -45,8 +46,10 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 									<br />
 									<span>
 										Scan the code or visit <br />
-										<Link href={`${siteUrl}/resume`}>{prettyUrl(`${siteUrl}/resume`)}</Link> for the
-										latest <br />
+										<Link href={`${siteUrl}/resume`}>
+											<a className="font-semibold">{prettyUrl(`${siteUrl}/resume`)}</a>
+										</Link>{" "}
+										for the latest <br />
 										available version of this document.
 									</span>
 								</span>
@@ -86,7 +89,7 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 						<div className="flex flex-col gap-2">
 							<span className="text-xl font-medium">Recent technologies</span>
 							<ul className="flex flex-col gap-1">
-								{aboutRecentTechnologies.map((item, idx) => (
+								{aboutRecentTechnologies.slice(0, 6).map((item, idx) => (
 									<li className="flex flex-col text-xs" key={idx}>
 										<span className="font-semibold">{item.name}</span>
 										<span>{item.description}</span>
@@ -104,12 +107,22 @@ export const Resume: React.FC<{ print: boolean }> = ({ print }) => {
 						</div>
 						<div className="flex flex-col gap-2">
 							<span className="text-xl font-medium">Personal projects</span>
-							{projects.featured.map((item, idx) => (
+							{projects.featured.slice(0, 2).map((item, idx) => (
 								<ProjectResumeItem item={item} key={idx} />
 							))}
 						</div>
 					</div>
 				</div>
+				<Link href={emailHref}>
+					<a>
+						<div className="flex justify-center items-center p-4 text-neutral-100 bg-neutral-900">
+							<span>
+								Interested in me? — Make an offer via{" "}
+								<span className="font-semibold">{prettyUrl(emailHref)}</span>.
+							</span>
+						</div>
+					</a>
+				</Link>
 			</div>
 		</div>
 	);

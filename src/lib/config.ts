@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { getYearSince } from "./date";
 
 export const fullName = "Aries Clark";
@@ -40,9 +41,26 @@ Try your luck and message me. `;
 
 export const aboutRecentTechnologies = [
 	{
+		name: "Elixir",
+		description:
+			"Elixir is a dynamic, functional language for building scalable and maintainable applications.",
+		href: "https://elixir-lang.org/"
+	},
+	{
+		name: "Phoenix",
+		description:
+			"Phoenix is a framework written in Elixir to provide highly performant web applications.",
+		href: "https://www.typescriptlang.org/"
+	},
+	{
 		name: "TypeScript",
 		description: "A strongly typed programming language that builds on JavaScript.",
 		href: "https://www.typescriptlang.org/"
+	},
+	{
+		name: "Tailwind CSS",
+		description: "A utility-first CSS framework for rapid UI development.",
+		href: "https://tailwindcss.com/"
 	},
 	{
 		name: "Next.js",
@@ -51,7 +69,7 @@ export const aboutRecentTechnologies = [
 		href: "https://nextjs.org/"
 	},
 	{
-		name: "React",
+		name: "React.js",
 		description: "A JavaScript library for building user interfaces.",
 		href: "https://reactjs.org/"
 	},
@@ -59,11 +77,6 @@ export const aboutRecentTechnologies = [
 		name: "Node.js",
 		description: "A runtime built on Chrome's V8 JavaScript engine.",
 		href: "https://nodejs.org/en/"
-	},
-	{
-		name: "Tailwind CSS",
-		description: "A utility-first CSS framework for rapid UI development.",
-		href: "https://tailwindcss.com/"
 	}
 ];
 
@@ -91,8 +104,19 @@ export const socials = [
 
 export const experience = [
 	{
+		name: "Studio Paprika",
+		logo: "/images/logos/studio-paprika.png",
+		href: "https://studiopaprika.io/",
+		type: "Full Time",
+		title: "Senior Software Engineer",
+		from: new Date("September 26, 2022"),
+		to: null,
+		description: `Building the first VR dating app, Flirtual. We're helping thousands of people meet in VR. With the new-and-improved Flirtual, we'll connect millions more VR users for dates, friendship, and everything in between.`
+	},
+	{
 		name: "Runes Security",
 		logo: "https://avatars.githubusercontent.com/u/101889654?s=200&v=4",
+		logoBackgroundColor: "black",
 		href: "https://runes.sh",
 		type: "Full Time",
 		title: "Senior Software Engineer",
@@ -129,6 +153,68 @@ software issues, and a slew of other issues related to the establishment of a ho
 
 export const projects = {
 	featured: [
+		{
+			name: "VRChat API Documentation",
+			image: "/images/vrchatapi.png",
+			href: "https://vrchatapi.github.io",
+			description: `
+Back in 2018 (just over ${getYearSince(
+				new Date(2018, 0, 1)
+			)} years ago!), I was the sole maintainer of this project, 
+but as time went on, documenting the rapid changes in the VRChat environment 
+became increasingly laborious.
+
+As a result, I sought assistance from the community and assigned the majority 
+of the work to fantastic volunteers who were prepared to devote time to the project 
+in order to take it forward. Since then, we've constructed an automated mechanism 
+for releasing SDKs in a variety of languages based on the OpenAPI definition, 
+which we manage.`,
+			keywords: [
+				{
+					name: "OpenAPI",
+					href: "https://github.com/vrchatapi/specification"
+				},
+				{
+					name: "Redocly",
+					href: "https://redoc.ly/"
+				},
+				{
+					name: "GitHub Pages",
+					href: "https://pages.github.com/"
+				},
+				{
+					name: "TypeScript",
+					href: "https://github.com/vrchatapi/vrchatapi-javascript"
+				},
+				{
+					name: "Python",
+					href: "https://github.com/vrchatapi/vrchatapi-python"
+				},
+				{
+					name: "C Sharp",
+					href: "https://github.com/vrchatapi/vrchatapi-csharp"
+				},
+				{
+					name: "Dart",
+					href: "https://github.com/vrchatapi/vrchatapi-dart"
+				},
+				{
+					name: "Rust",
+					href: "https://github.com/vrchatapi/vrchatapi-rust"
+				},
+				{
+					name: "Java",
+					href: "https://github.com/vrchatapi/vrchatapi-java"
+				}
+			],
+			links: [
+				{
+					name: "GitHub",
+					href: "https://github.com/vrchatapi/",
+					icon: "GitHub"
+				}
+			]
+		},
 		{
 			name: "Next.js job board",
 			image: "/images/nextjs_jobs.png",
@@ -216,72 +302,10 @@ Next.js, Tailwind.css, and TypeScript.
 					icon: "GitHub"
 				}
 			]
-		},
-		{
-			name: "VRChat API Documentation",
-			image: "/images/vrchatapi.png",
-			href: "https://vrchatapi.github.io",
-			description: `
-Back in 2018 (just over ${getYearSince(
-				new Date(2018, 0, 1)
-			)} years ago!), I was the sole maintainer of this project, 
-but as time went on, documenting the rapid changes in the VRChat environment 
-became increasingly laborious.
-
-As a result, I sought assistance from the community and assigned the majority 
-of the work to fantastic volunteers who were prepared to devote time to the project 
-in order to take it forward. Since then, we've constructed an automated mechanism 
-for releasing SDKs in a variety of languages based on the OpenAPI definition, 
-which we manage.`,
-			keywords: [
-				{
-					name: "OpenAPI",
-					href: "https://github.com/vrchatapi/specification"
-				},
-				{
-					name: "Redocly",
-					href: "https://redoc.ly/"
-				},
-				{
-					name: "GitHub Pages",
-					href: "https://pages.github.com/"
-				},
-				{
-					name: "TypeScript",
-					href: "https://github.com/vrchatapi/vrchatapi-javascript"
-				},
-				{
-					name: "Python",
-					href: "https://github.com/vrchatapi/vrchatapi-python"
-				},
-				{
-					name: "C Sharp",
-					href: "https://github.com/vrchatapi/vrchatapi-csharp"
-				},
-				{
-					name: "Dart",
-					href: "https://github.com/vrchatapi/vrchatapi-dart"
-				},
-				{
-					name: "Rust",
-					href: "https://github.com/vrchatapi/vrchatapi-rust"
-				},
-				{
-					name: "Java",
-					href: "https://github.com/vrchatapi/vrchatapi-java"
-				}
-			],
-			links: [
-				{
-					name: "GitHub",
-					href: "https://github.com/vrchatapi/",
-					icon: "GitHub"
-				}
-			]
 		}
 	]
 };
 
-export const emailHref = socials.find(({ href }) => href.includes("mailto"))?.href;
-export const twitterHref = socials.find(({ href }) => href.includes("twitter.com"))?.href;
+export const emailHref = socials.find(({ href }) => href.includes("mailto"))!.href;
+export const twitterHref = socials.find(({ href }) => href.includes("twitter.com"))!.href;
 export const twitterUsername = twitterHref?.match(/twitter\.com\/([^/]+)/i)?.[1];

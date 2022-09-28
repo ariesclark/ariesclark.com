@@ -17,7 +17,7 @@ export const ProjectResumeItem: React.FC<{ item: typeof projects.featured[number
 			</ul>
 		</div>
 		<Markdown className="pl-2 max-w-lg text-sm border-l-2 border-black/40">{`${description
-			.slice(0, 256)
+			.slice(0, 160)
 			.trim()}...`}</Markdown>
 	</Link>
 );
