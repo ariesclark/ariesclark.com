@@ -10,8 +10,8 @@ import { SectionConnections } from "./section-connections";
 
 const RootIndexPage: React.FC = () => {
 	return (
-		<div className="flex flex-col h-screen font-nunito">
-			<div className="flex grow w-full">
+		<div className="w-screen grid grid-cols-1 [grid-template-rows:minmax(0,1fr)_max-content] h-screen font-nunito">
+			<main className="flex grow w-full">
 				<SectionConnections />
 				<SectionAbout />
 				<SectionExperience />
@@ -21,7 +21,7 @@ const RootIndexPage: React.FC = () => {
 				<Section className="bg-red-100" />
 				<Section className="bg-red-200" />
 				<Section className="bg-red-300" />
-			</div>
+			</main>
 			<footer className="py-8 px-16 bg-black-200 text-white-100 shrink-0 text-lg">
 				<span>
 					Copyright © <InlineLink href="/">Aries Clark</InlineLink>, {new Date().getFullYear()}

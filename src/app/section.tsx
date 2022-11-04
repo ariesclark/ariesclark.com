@@ -2,7 +2,7 @@
 "use client";
 
 import { atom, useAtom } from "jotai";
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type SectionProps = React.ComponentProps<"section"> & {
@@ -39,13 +39,6 @@ export const Section: React.FC<SectionProps> = (props) => {
 	}, [focusedSection, defaultFocus]);
 
 	const expandable = !!labelIcon;
-
-	const [footerHeight, setFooterHeight] = useState(0);
-	useEffect(() => {
-		if (typeof document === "undefined") return;
-		setFooterHeight(document.querySelector("footer")?.getBoundingClientRect().height ?? 0);
-	}, []);
-
 	return (
 		<section
 			{...elementProps}
@@ -58,9 +51,6 @@ export const Section: React.FC<SectionProps> = (props) => {
 				focused && focusClassName,
 				focused ? "shrink-0 w-100 " : "w-screen-1/9 min-w-0"
 			)}
-			style={{
-				height: `calc(100vh - ${footerHeight}px)`
-			}}
 			onFocus={({ currentTarget }) => {
 				if (!expandable) return;
 				setFocusedSection(currentTarget);
