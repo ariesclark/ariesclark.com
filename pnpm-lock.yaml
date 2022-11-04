@@ -4,7 +4,9 @@ specifiers:
   '@ariesclark/eslint-config': ^1.4.2
   '@ariesclark/utils': ^1.1.3
   '@heroicons/react': ^2.0.13
+  '@icons-pack/react-simple-icons': ^5.11.0
   '@next/eslint-plugin-next': ^13.0.1
+  '@next/font': ^13.0.1
   '@types/glob': ^8.0.0
   '@types/ms': ^0.7.31
   '@types/node': ^18.11.9
@@ -13,6 +15,7 @@ specifiers:
   autoprefixer: ^10.4.13
   eslint: ^8.26.0
   glob: ^8.0.3
+  jotai: ^1.9.1
   ms: ^2.1.3
   next: ^13.0.1
   node-fetch: ^3.2.10
@@ -25,6 +28,7 @@ specifiers:
   tailwind-merge: ^1.7.0
   tailwind-scrollbar: ^2.0.1
   tailwindcss: ^3.2.1
+  tailwindcss-hocus: ^0.0.3
   typescript: ^4.8.4
   vercel: ^28.4.14
   zustand: 4.1.4
@@ -32,7 +36,10 @@ specifiers:
 dependencies:
   '@ariesclark/utils': 1.1.3
   '@heroicons/react': 2.0.13_react@18.2.0
+  '@icons-pack/react-simple-icons': 5.11.0_react@18.2.0
+  '@next/font': 13.0.1
   glob: 8.0.3
+  jotai: 1.9.1_react@18.2.0
   ms: 2.1.3
   next: 13.0.1_2mygebwfgdyopr3fy2qddu2eli
   node-fetch: 3.2.10
@@ -57,6 +64,7 @@ devDependencies:
   sass: 1.55.0
   tailwind-scrollbar: 2.0.1_tailwindcss@3.2.1
   tailwindcss: 3.2.1
+  tailwindcss-hocus: 0.0.3_tailwindcss@3.2.1
   typescript: 4.8.4
   vercel: 28.4.14
 
@@ -151,6 +159,14 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@icons-pack/react-simple-icons/5.11.0_react@18.2.0:
+    resolution: {integrity: sha512-hFJ4Q4JcYe/wQUab+gIug1BONjBUelaUVFYsZ1FKv5CEX/fP56qGet4CPmx18BqDhxrOehidYNlLyGppXL9/7w==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@mapbox/node-pre-gyp/1.0.10:
     resolution: {integrity: sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==}
     hasBin: true
@@ -178,6 +194,10 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/font/13.0.1:
+    resolution: {integrity: sha512-ktst4FFbEPtD8SJVQr2HuAqOoFpJx3xKkLOHzCV7D5PUk6KL/sFQa+t6UEucN70X037tqBV39BsFhMJ56hsPOw==}
+    dev: false
 
   /@next/swc-android-arm-eabi/13.0.1:
     resolution: {integrity: sha512-M28QSbohZlNXNn//HY6lV2T3YaMzG58Jwr0YwOdVmOQv6i+7lu6xe3GqQu4kdqInqhLrBXnL+nabFuGTVSHtTg==}
@@ -2416,6 +2436,40 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
+  /jotai/1.9.1_react@18.2.0:
+    resolution: {integrity: sha512-rDmmDL6owX4Kg5fAV0arjGVJmT1VYnkROwAx/PgpMkYCzvHEtABm8qnq/Ki5o5/GFGbvdfE11VNP1brDWP7+9w==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      '@babel/template': '*'
+      immer: '*'
+      jotai-tanstack-query: '*'
+      jotai-urql: '*'
+      optics-ts: '*'
+      react: '>=16.8'
+      valtio: '*'
+      xstate: '*'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      immer:
+        optional: true
+      jotai-tanstack-query:
+        optional: true
+      jotai-urql:
+        optional: true
+      optics-ts:
+        optional: true
+      valtio:
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /js-sdsl/4.1.5:
     resolution: {integrity: sha512-08bOAKweV2NUC1wqTtf3qZlnpOX/R2DU9ikpjOHs0H+ibQv3zpncVQg6um4uYtRtrwIX8M4Nh3ytK4HGlYAq7Q==}
     dev: true
@@ -3731,6 +3785,14 @@ packages:
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: 3.x
+    dependencies:
+      tailwindcss: 3.2.1
+    dev: true
+
+  /tailwindcss-hocus/0.0.3_tailwindcss@3.2.1:
+    resolution: {integrity: sha512-nV8yR0hOGezM4rPASaydynLp0n7FMmpy1ABkMuiTnBGuRtSCHoTCKxH+IeT4m3pOU6EaO4IGw765OWuKqdci8w==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0'
     dependencies:
       tailwindcss: 3.2.1
     dev: true
