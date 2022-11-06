@@ -1,24 +1,22 @@
 import { LinkIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
 
-import { connections } from "~/config";
-
+import { ConnectionSpotify } from "./connection-spotify";
+import { ConnectionTwitter } from "./connection-twitter";
 import { Section } from "./section";
 
-export const SectionConnections: React.FC = () => (
-	<Section
-		className="bg-black-300 text-white-100"
-		flagClassName="bg-red-300"
-		label="Connections"
-		labelIcon={<LinkIcon />}
-	>
-		<div className="flex gap-4 justify-between">
-			{connections.map(({ name, href, Icon }, connectionIdx) => (
-				<Link className="flex gap-2 items-center" href={href} key={connectionIdx}>
-					<Icon className="w-8" />
-					<span className="font-nunito font-semibold text-lg">{name}</span>
-				</Link>
-			))}
-		</div>
-	</Section>
-);
+export const SectionConnections: React.FC = () => {
+	return (
+		<Section
+			className="bg-black-300 text-white-100"
+			flagClassName="bg-red-300"
+			label="Connections"
+			labelIcon={<LinkIcon />}
+		>
+			<div className="flex gap-4 justify-between flex-col">
+				<ConnectionSpotify />
+				{/* @ts-expect-error: Server Component */}
+				<ConnectionTwitter />
+			</div>
+		</Section>
+	);
+};

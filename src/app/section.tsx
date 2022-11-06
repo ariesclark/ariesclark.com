@@ -7,6 +7,7 @@ import { twMerge } from "tailwind-merge";
 
 export type SectionProps = React.ComponentProps<"section"> & {
 	defaultFocus?: boolean;
+	desktopOnly?: boolean;
 	flagTrigger?: boolean;
 	flagClassName?: string;
 	focusClassName?: string;
@@ -20,6 +21,7 @@ const flagFocusedAtom = atom<boolean>(false);
 export const Section: React.FC<SectionProps> = (props) => {
 	const {
 		defaultFocus = false,
+		desktopOnly = false,
 		flagTrigger = false,
 		flagClassName,
 		focusClassName,
@@ -39,6 +41,7 @@ export const Section: React.FC<SectionProps> = (props) => {
 	}, [focusedSection, defaultFocus]);
 
 	const expandable = !!labelIcon;
+
 	return (
 		<section
 			{...elementProps}
@@ -46,10 +49,11 @@ export const Section: React.FC<SectionProps> = (props) => {
 			tabIndex={expandable ? 0 : -1}
 			className={twMerge(
 				props.className,
-				"overflow-hidden flex flex-col focus:outline-none gap-8",
+				"overflow-hidden flex-col focus:outline-none gap-8",
+				desktopOnly ? "hidden lg:flex" : "flex",
 				flagFocused && flagClassName,
 				focused && focusClassName,
-				focused ? "shrink-0 w-100 " : "w-screen-1/9 min-w-0"
+				focused ? "shrink-0 lg:w-100" : "lg:w-screen-1/9 min-w-0"
 			)}
 			onFocus={({ currentTarget }) => {
 				if (!expandable) return;
@@ -65,15 +69,15 @@ export const Section: React.FC<SectionProps> = (props) => {
 			<div
 				className={twMerge(
 					"flex w-full whitespace-nowrap p-16 pb-0 relative",
-					flagFocused && "opacity-0",
+					flagFocused && "lg:opacity-0",
 					focused ? "" : "px-8"
 				)}
 			>
 				{label && (
 					<div
 						className={twMerge(
-							"absolute pointer-events-none top-0 pt-32 flex z-50 left-0 w-full justify-center delay-[0ms] duration-100",
-							focused ? "opacity-0" : "opacity-100"
+							"hidden lg:flex absolute pointer-events-none top-0 pt-32 z-50 left-0 w-full justify-center delay-[0ms] duration-100",
+							focused ? "lg:opacity-0" : "opacity-100"
 						)}
 					>
 						<span
@@ -98,7 +102,7 @@ export const Section: React.FC<SectionProps> = (props) => {
 						<span
 							className={twMerge(
 								"text-xl font-nunito font-bold",
-								focused ? "opacity-100 grow w-fit" : "opacity-0 w-0 grow-0"
+								focused ? "opacity-100 grow w-fit" : "lg:opacity-0 lg:w-0 lg:grow-0"
 							)}
 						>
 							{label}
@@ -108,8 +112,8 @@ export const Section: React.FC<SectionProps> = (props) => {
 			</div>
 			<div
 				className={twMerge(
-					"grow w-100 p-16 pt-0 h-full overflow-y-scroll",
-					focused ? "opacity-100" : "opacity-0"
+					"grow lg:w-100 p-16 pt-0 h-full overflow-y-scroll",
+					focused ? "opacity-100" : "lg:opacity-0"
 				)}
 			>
 				{props.children}

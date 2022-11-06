@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-export const siteDomain = "ariesclark.com";
-export const siteUrl = `https://${siteDomain}`;
-
 export const birthday = new Date(2002, 4, 29);
 
 export const recentTechnologies = [
@@ -46,8 +43,9 @@ export const recentTechnologies = [
 	}
 ];
 
-/** Google Analytics */
-export const gaMeasurementId = "G-JYF8EMX65Z";
+import { Github, Gmail, Linkedin, Twitter } from "@icons-pack/react-simple-icons";
+
+export const twitterUsername = process.env["NEXT_PUBLIC_TWITTER_USERNAME"];
 
 export const connections = [
 	{
@@ -71,8 +69,6 @@ export const connections = [
 		Icon: Github
 	}
 ];
-
-import { Github, Gmail, Linkedin, Twitter } from "@icons-pack/react-simple-icons";
 
 import LogoStudioPaprika from "~/../public/images/logos/studio-paprika.png";
 import LogoRunesSecurity from "~/../public/images/logos/runes-security.png";
@@ -126,6 +122,18 @@ software issues, and a slew of other issues related to the management of a hosti
 	}
 ];
 
+export const siteUrl = process.env["NEXT_PUBLIC_SITE_URL"] as string;
+
+/** Google Analytics */
+export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"] as string;
+
+// Service credentials.
+export const twitterBearerToken = process.env["TWITTER_TOKEN"] as string;
+
+export const spotifyClientId = process.env["SPOTIFY_CLIENT_ID"] as string;
+export const spotifyClientSecret = process.env["SPOTIFY_CLIENT_SECRET"] as string;
+export const spotifyAccessToken = process.env["SPOTIFY_ACCESS_TOKEN"] as string;
+export const spotifyRefreshToken = process.env["SPOTIFY_REFRESH_TOKEN"] as string;
+
 export const emailHref = connections.find(({ href }) => href.includes("mailto"))!.href;
 export const twitterHref = connections.find(({ href }) => href.includes("twitter.com"))!.href;
-export const twitterUsername = twitterHref?.match(/twitter\.com\/([^/]+)/i)?.[1];

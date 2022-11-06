@@ -1,7 +1,10 @@
 /* eslint-disable no-undef */
-const plugin = require("tailwindcss/plugin");
 
 const colors = {
+	brand: {
+		twitter: "#1DA1F2",
+		spotify: "#1DB954"
+	},
 	black: {
 		100: "#191919",
 		200: "#141414",

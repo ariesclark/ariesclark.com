@@ -10,7 +10,7 @@ import { birthday, recentTechnologies } from "~/config";
 import { InlineLink } from "~/components/inline-link";
 
 import { Section } from "./section";
-import { ImageGallary } from "./image-gallary";
+import { ImageGallery } from "./image-gallery";
 
 export const SectionAbout: React.FC = () => (
 	<Section
@@ -21,7 +21,7 @@ export const SectionAbout: React.FC = () => (
 		labelIcon={<IdentificationIcon />}
 	>
 		<div className="flex flex-col gap-8">
-			<ImageGallary
+			<ImageGallery
 				images={[
 					[SelfImage, "Picture of Aries Clark"],
 					[Self1Image, "Picture of Aries Clark"],

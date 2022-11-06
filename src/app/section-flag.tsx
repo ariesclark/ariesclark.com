@@ -3,7 +3,7 @@ import { FlagIcon } from "@heroicons/react/24/solid";
 import { Section } from "./section";
 
 export const SectionFlag: React.FC = () => (
-	<Section flagTrigger className="bg-white-200" labelIcon={<FlagIcon />}>
+	<Section desktopOnly flagTrigger className="bg-white-200" labelIcon={<FlagIcon />}>
 		<div className="flex items-center justify-center w-full h-full -mt-16">
 			<svg
 				className="h-full 2xl:h-96"

@@ -48,7 +48,7 @@ export const SectionExperience: React.FC = () => (
 						{value.description.length > 124 && (
 							<>
 								<span className="opacitiy-100 inline-block group-hocus-within:opacity-0 w-0">
-									...
+									…
 								</span>
 								<span className="opacity-0 group-hocus-within:opacity-100">
 									{value.description.slice(124, value.description.length)}

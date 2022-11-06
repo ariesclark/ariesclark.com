@@ -10,17 +10,17 @@ import { SectionConnections } from "./section-connections";
 
 const RootIndexPage: React.FC = () => {
 	return (
-		<div className="w-screen grid grid-cols-1 [grid-template-rows:minmax(0,1fr)_max-content] h-screen font-nunito">
-			<main className="flex grow w-full">
+		<div className="w-screen flex flex-col md:grid md:grid-cols-1 md:[grid-template-rows:minmax(0,1fr)_max-content] h-screen font-nunito">
+			<main className="flex grow w-full flex-col md:flex-row">
 				<SectionConnections />
 				<SectionAbout />
 				<SectionExperience />
-				<Section className="bg-white-300" />
+				<Section desktopOnly className="bg-white-300" />
 				<SectionFlag />
-				<Section className="bg-white-300" />
-				<Section className="bg-red-100" />
-				<Section className="bg-red-200" />
-				<Section className="bg-red-300" />
+				<Section desktopOnly className="bg-white-300" />
+				<Section desktopOnly className="bg-red-100" />
+				<Section desktopOnly className="bg-red-200" />
+				<Section desktopOnly className="bg-red-300" />
 			</main>
 			<footer className="py-8 px-16 bg-black-200 text-white-100 shrink-0 text-lg">
 				<span>

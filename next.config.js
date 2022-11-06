@@ -3,7 +3,11 @@
 module.exports = {
 	reactStrictMode: true,
 	experimental: {
-		appDir: true
+		appDir: true,
+		enableUndici: false
+	},
+	images: {
+		domains: ["pbs.twimg.com", "i.scdn.co"]
 	},
 	headers: async () => {
 		return [

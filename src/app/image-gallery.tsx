@@ -7,7 +7,7 @@ export interface ImageGallaryProps {
 	images: Array<[image: StaticImageData, alt: string]>;
 }
 
-export const ImageGallary: React.FC<ImageGallaryProps> = ({ images }) => {
+export const ImageGallery: React.FC<ImageGallaryProps> = ({ images }) => {
 	const [activeIdx, setActiveIdx] = useState(0);
 	const [activeImage, activeImageAlt] = images[activeIdx];
 
