@@ -9,12 +9,12 @@ import { Section } from "./section";
 
 export const SectionExperience: React.FC = () => (
 	<Section
-		className="bg-black-100 text-white-100"
+		className="bg-black-100 text-white-100 flex flex-col gap-4 h-full"
 		flagClassName="bg-red-100"
 		label="Experience"
 		labelIcon={<BuildingOffice2Icon />}
 	>
-		<div className="flex flex-col gap-4 h-full">
+		<div className="flex flex-col gap-4">
 			{experience.map((value, experienceIdx) => (
 				<div
 					className="group relative focus:outline-none bg-black-200 md:h-52 md:hocus-within:h-60 p-4 lg:p-8 gap-4 flex flex-col rounded-lg shadow-highlight"
