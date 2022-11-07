@@ -3,33 +3,45 @@
 import { Github } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { GithubContributionCalendar } from "~/connections/github";
+import {
+	GithubContributionCalendar,
+	GithubContributionCalenderDay,
+	GithubContributionCalenderWeek
+} from "~/connections/github";
 import { useGitHub } from "~/hooks/use-github";
 
-const ContributionCalandar: React.FC<{ calendar: GithubContributionCalendar }> = ({ calendar }) => (
-	<div className="flex gap-0.5">
-		{calendar.weeks.slice(0, -1).map((week, weekIdx) => {
-			return (
-				<div className="flex flex-col grow gap-0.5" key={weekIdx}>
-					{week.contributionDays.map((day, dayIdx) => {
-						const date = new Date(day.date);
-						const backgroundColor = day.contributionCount > 0 ? day.color : "";
+const ContributionCalendarDay: React.FC<{ day: GithubContributionCalenderDay }> = ({ day }) => {
+	const backgroundColor = day.contributionCount > 0 ? day.color : "";
+	const date = new Date(day.date);
 
-						return (
-							<div
-								className="h-auto aspect-square w-full"
-								key={dayIdx}
-								style={{ backgroundColor }}
-								title={date.toLocaleDateString()}
-							/>
-						);
-					})}
-				</div>
-			);
-		})}
+	return (
+		<div
+			className="h-auto aspect-square w-full bg-black-100"
+			style={{ backgroundColor }}
+			title={`${day.contributionCount} commits on ${date.toLocaleDateString()}`}
+		/>
+	);
+};
+
+const ContributionCalendarWeek: React.FC<{ week: GithubContributionCalenderWeek }> = ({ week }) => (
+	<div className="flex flex-col grow gap-0.5">
+		{week.contributionDays.map((day, dayIdx) => (
+			<ContributionCalendarDay day={day} key={dayIdx} />
+		))}
 	</div>
 );
+
+const ContributionCalendar: React.FC<{ calendar: GithubContributionCalendar }> = ({ calendar }) => {
+	return (
+		<div className="flex gap-0.5">
+			{calendar.weeks.slice(8, -1).map((week, weekIdx) => (
+				<ContributionCalendarWeek key={weekIdx} week={week} />
+			))}
+		</div>
+	);
+};
 
 export const ConnectionGitHub: React.FC = () => {
 	const metadata = useGitHub();
@@ -59,7 +71,9 @@ export const ConnectionGitHub: React.FC = () => {
 					<Github className="w-8 h-8" />
 				</Link>
 			</div>
-			<ContributionCalandar calendar={user.contributionsCollection.contributionCalendar} />
+			<div className="p-4">
+				<ContributionCalendar calendar={user.contributionsCollection.contributionCalendar} />
+			</div>
 		</div>
 	);
 };
