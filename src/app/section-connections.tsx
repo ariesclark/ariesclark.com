@@ -20,7 +20,6 @@ export const SectionConnections: React.FC = () => {
 			labelIcon={<LinkIcon />}
 		>
 			<div className="flex gap-4 justify-between flex-col">
-				<ConnectionSpotify />
 				<div className="w-full rounded-lg shadow-highlight bg-black-200 relative flex flex-col overflow-hidden">
 					<div className="items-center flex p-4 gap-4">
 						<Image
@@ -44,6 +43,8 @@ export const SectionConnections: React.FC = () => {
 					</div>
 				</div>
 				<ConnectionGitHub />
+				<ConnectionSpotify />
+
 				{/* @ts-expect-error: Server Component */}
 				<ConnectionTwitter />
 			</div>
