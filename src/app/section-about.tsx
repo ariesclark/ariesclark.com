@@ -1,5 +1,4 @@
 import { IdentificationIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
 
 import { getYearSince } from "~/utilities";
 import SelfImage from "~/../public/images/self.jpeg";

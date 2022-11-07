@@ -68,16 +68,16 @@ export const Section: React.FC<SectionProps> = (props) => {
 		>
 			<div
 				className={twMerge(
-					"flex w-full whitespace-nowrap p-16 pb-0 relative",
+					"flex w-full whitespace-nowrap p-8 md:p-16 lg:pb-0 pb-0 relative",
 					flagFocused && "lg:opacity-0",
 					focused ? "" : "px-8"
 				)}
 			>
-				{label && (
+				{label && desktopOnly && (
 					<div
 						className={twMerge(
-							"hidden lg:flex absolute pointer-events-none top-0 pt-32 z-50 left-0 w-full justify-center delay-[0ms] duration-100",
-							focused ? "lg:opacity-0" : "opacity-100"
+							"flex absolute pointer-events-none top-0 pt-32 z-50 left-0 w-full justify-center delay-[0ms] duration-100",
+							focused ? "opacity-0" : "opacity-100"
 						)}
 					>
 						<span
@@ -90,13 +90,13 @@ export const Section: React.FC<SectionProps> = (props) => {
 				)}
 				<div
 					className={twMerge(
-						"flex w-full items-center justify-center",
-						focused ? "gap-8" : "gap-0"
+						"flex w-full items-center md:justify-center",
+						focused ? "gap-8" : "gap-8 md:gap-0"
 					)}
 				>
 					{labelIcon &&
 						React.cloneElement(labelIcon, {
-							className: twMerge("shrink-0 w-9 h-9", focused ? "" : "grow")
+							className: twMerge("shrink-0 w-9 h-9", focused ? "" : "md:grow")
 						})}
 					{label && (
 						<span
@@ -112,7 +112,7 @@ export const Section: React.FC<SectionProps> = (props) => {
 			</div>
 			<div
 				className={twMerge(
-					"grow lg:w-100 p-16 pt-0 h-full overflow-y-scroll",
+					"grow lg:w-100 p-8 lg:p-16 lg:pt-0 pt-0 h-full overflow-y-auto",
 					focused ? "opacity-100" : "lg:opacity-0"
 				)}
 			>

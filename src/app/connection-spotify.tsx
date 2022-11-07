@@ -4,12 +4,15 @@ import { Spotify } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import useSWR from "swr";
 
-import { siteUrl } from "~/config";
-import { type getCurrentSpotifyTrack } from "~/connections/spotify";
+import { useSpotify } from "~/hooks/use-spotify";
 
-const TrackSlider: React.FC<{ progress: number; length: number }> = ({ progress, length }) => {
+interface TrackProgressProps {
+	progress: number;
+	length: number;
+}
+
+const TrackProgress: React.FC<TrackProgressProps> = ({ progress, length }) => {
 	return (
 		<div className="flex w-full h-2 relative">
 			<div className="bg-black-100 w-full" />
@@ -22,22 +25,39 @@ const TrackSlider: React.FC<{ progress: number; length: number }> = ({ progress,
 };
 
 export const ConnectionSpotify: React.FC = () => {
-	const { data: track } = useSWR(
-		"spotify",
-		() =>
-			fetch(new URL("/api/spotify", siteUrl)).then(
-				(response) => response.json() as ReturnType<typeof getCurrentSpotifyTrack>
-			),
-		{ refreshInterval: 500 }
-	);
+	const track = useSpotify();
 
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 	const [previewPaused, setPreviewPaused] = useState(true);
 
+	const [trackProgress, setTrackProgress] = useState(0);
+
+	/**
+	 * After a network request, we sync our assumed progress
+	 * with what the songs playback is actually at, this may
+	 * cause a jump if a song was paused or skipped.
+	 */
+	useEffect(() => {
+		setTrackProgress(track?.progress ?? 0);
+	}, [track?.progress]);
+
+	/**
+	 * Client assumes the song is still playing since the last
+	 * network request, and increases the current progress, this
+	 * allows the progress bar to have a smooth transition.
+	 */
+	useEffect(() => {
+		const id = setInterval(() => {
+			if (!track?.playing) return;
+			setTrackProgress((value) => value + 500);
+		}, 500);
+		return () => clearInterval(id);
+	}, [track?.playing]);
+
 	if (!track) return null;
 
 	return (
-		<div className="w-full rounded-lg shadow-highlight bg-black-200  flex flex-col overflow-hidden relative">
+		<div className="group w-full rounded-lg shadow-highlight bg-black-200 flex flex-col overflow-hidden relative">
 			<div className="items-center flex p-4 gap-4 relative">
 				<Image
 					alt={`Song cover for @${track.name}`}
@@ -51,8 +71,8 @@ export const ConnectionSpotify: React.FC = () => {
 					href={track.url}
 					target="_blank"
 				>
-					<span className="text-lg font-bold leading-none">{track.name}</span>
-					<span className="text-white-400">{track.artists.join(", ")}</span>
+					<span className="font-bold leading-none">{track.name}</span>
+					<span className="text-white-400 text-sm">{track.artists.join(", ")}</span>
 				</Link>
 				<div className="ml-auto mr-4 flex gap-4 shrink-0">
 					{track.previewUrl && (
@@ -79,16 +99,10 @@ export const ConnectionSpotify: React.FC = () => {
 							</button>
 						</>
 					)}
-					<Link
-						className="before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-10"
-						href={""}
-						target="_blank"
-					>
-						<Spotify className="text-brand-spotify w-8 h-8" />
-					</Link>
+					<Spotify className="text-brand-spotify w-8 h-8" />
 				</div>
 			</div>
-			<TrackSlider length={track.length} progress={track.progress ?? 0} />
+			<TrackProgress length={track.length} progress={trackProgress} />
 		</div>
 	);
 };

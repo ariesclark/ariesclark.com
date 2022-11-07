@@ -17,7 +17,7 @@ export const SectionExperience: React.FC = () => (
 		<div className="flex flex-col gap-4 h-full">
 			{experience.map((value, experienceIdx) => (
 				<div
-					className="group relative focus:outline-none bg-black-200 h-52 hocus-within:h-60 p-8 gap-4 flex flex-col rounded-lg shadow-highlight"
+					className="group relative focus:outline-none bg-black-200 md:h-52 md:hocus-within:h-60 p-4 lg:p-8 gap-4 flex flex-col rounded-lg shadow-highlight"
 					key={experienceIdx}
 					tabIndex={0}
 				>
@@ -47,10 +47,10 @@ export const SectionExperience: React.FC = () => (
 						{value.description.slice(0, 124)}
 						{value.description.length > 124 && (
 							<>
-								<span className="opacitiy-100 inline-block group-hocus-within:opacity-0 w-0">
+								<span className="opacitiy-100 hidden lg:inline-block group-hocus-within:opacity-0 w-0">
 									…
 								</span>
-								<span className="opacity-0 group-hocus-within:opacity-100">
+								<span className="lg:opacity-0 group-hocus-within:opacity-100">
 									{value.description.slice(124, value.description.length)}
 								</span>
 							</>

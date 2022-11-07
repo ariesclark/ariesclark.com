@@ -22,7 +22,7 @@ const RootIndexPage: React.FC = () => {
 				<Section desktopOnly className="bg-red-200" />
 				<Section desktopOnly className="bg-red-300" />
 			</main>
-			<footer className="py-8 px-16 bg-black-200 text-white-100 shrink-0 text-lg">
+			<footer className="p-8 lg:px-16 bg-black-200 text-white-100 shrink-0 text-lg">
 				<span>
 					Copyright © <InlineLink href="/">Aries Clark</InlineLink>, {new Date().getFullYear()}
 				</span>

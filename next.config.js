@@ -7,7 +7,7 @@ module.exports = {
 		enableUndici: false
 	},
 	images: {
-		domains: ["pbs.twimg.com", "i.scdn.co"]
+		domains: ["pbs.twimg.com", "i.scdn.co", "avatars.githubusercontent.com"]
 	},
 	headers: async () => {
 		return [

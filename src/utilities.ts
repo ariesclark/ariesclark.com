@@ -6,7 +6,7 @@ export function getYearSince(date: Date, since: Date = new Date()): number {
 
 export function getMonthYear(date: Date): string {
 	return date.toLocaleDateString("en-ca", {
-		month: "long",
+		month: "short",
 		year: "numeric"
 	});
 }

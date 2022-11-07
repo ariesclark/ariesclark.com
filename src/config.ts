@@ -45,8 +45,6 @@ export const recentTechnologies = [
 
 import { Github, Gmail, Linkedin, Twitter } from "@icons-pack/react-simple-icons";
 
-export const twitterUsername = process.env["NEXT_PUBLIC_TWITTER_USERNAME"];
-
 export const connections = [
 	{
 		name: "Email",
@@ -81,7 +79,7 @@ export const experience = [
 		logo: LogoStudioPaprika,
 		href: "https://studiopaprika.io/",
 		type: "Full Time",
-		title: "Senior Software Engineer",
+		title: "Lead Software Engineer",
 		from: new Date("September 26, 2022"),
 		to: null,
 		description: `Building the first VR dating app, Flirtual. We're helping thousands of people 
@@ -122,17 +120,22 @@ software issues, and a slew of other issues related to the management of a hosti
 	}
 ];
 
-export const siteUrl = process.env["NEXT_PUBLIC_SITE_URL"] as string;
+const vercelUrl = process.env["NEXT_PUBLIC_VERCEL_URL"] as string;
+export const siteUrl = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000";
+
+export const emailAddress = process.env["NEXT_PUBLIC_EMAIL_ADDRESS"]!;
+export const twitterUsername = process.env["NEXT_PUBLIC_TWITTER_USERNAME"]!;
+export const githubUsername = process.env["NEXT_PUBLIC_GITHUB_USERNAME"]!;
 
 /** Google Analytics */
 export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"] as string;
 
 // Service credentials.
 export const twitterBearerToken = process.env["TWITTER_TOKEN"] as string;
+export const githubBearerToken = process.env["GITHUB_TOKEN"] as string;
 
 export const spotifyClientId = process.env["SPOTIFY_CLIENT_ID"] as string;
 export const spotifyClientSecret = process.env["SPOTIFY_CLIENT_SECRET"] as string;
-export const spotifyAccessToken = process.env["SPOTIFY_ACCESS_TOKEN"] as string;
 export const spotifyRefreshToken = process.env["SPOTIFY_REFRESH_TOKEN"] as string;
 
 export const emailHref = connections.find(({ href }) => href.includes("mailto"))!.href;

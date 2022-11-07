@@ -12,7 +12,7 @@ async function Tweet(props: { tweet: Tweet; user: TwitterUser }) {
 	return (
 		<div className="flex flex-col gap-4 bg-black-200 shadow-highlight rounded-lg p-4 relative">
 			{tweet.retweet && (
-				<div className="flex gap-2 items-center">
+				<div className="flex gap-2 items-center z-10">
 					<ShareIcon className="h-4 w-4" />
 					<span className="text-sm font-bold text-white-400">
 						<InlineLink href={user.url} target="_blank">
@@ -22,32 +22,27 @@ async function Tweet(props: { tweet: Tweet; user: TwitterUser }) {
 					</span>
 				</div>
 			)}
-			<div className="flex gap-4">
-				<Link
-					className="rounded-lg h-10 w-10 shrink-0 overflow-hidden"
-					href={tweet.author.url}
-					target="_blank"
-				>
+			<div className="flex flex-col gap-4">
+				<div className="flex gap-2 lg:gap-4">
 					<Image
 						alt={`Twitter profile picture for @${tweet.author.username}`}
+						className="rounded-lg h-10 w-10 shrink-0 overflow-hidden"
 						height={48}
 						src={tweet.author.profile_image_url}
 						width={48}
 					/>
-				</Link>
-				<div className="flex flex-col gap-2">
-					<Link className="flex gap-2 items-center" href={tweet.author.url} target="_blank">
+					<Link className="flex flex-col z-10 w-full" href={tweet.author.url} target="_blank">
 						<span className="font-semibold leading-none">{tweet.author.name}</span>
-						<span className="text-white-400 text-sm leading-5">{`@${tweet.author.username}`}</span>
-					</Link>
-					<Link
-						className="before:absolute before:w-full before:h-full before:top-0 before:left-0 before:-z-10"
-						href={tweet.url}
-						target="_blank"
-					>
-						{tweet.text}
+						<span className="text-white-400 text-sm leading-5 hover:underline">{`@${tweet.author.username}`}</span>
 					</Link>
 				</div>
+				<Link
+					className="before:absolute before:w-full before:h-full before:top-0 before:left-0"
+					href={tweet.url}
+					target="_blank"
+				>
+					<span className="text-sm lg:text-base">{tweet.text}</span>
+				</Link>
 			</div>
 		</div>
 	);
