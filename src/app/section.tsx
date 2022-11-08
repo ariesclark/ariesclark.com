@@ -49,11 +49,11 @@ export const Section: React.FC<SectionProps> = (props) => {
 			tabIndex={expandable ? 0 : -1}
 			className={twMerge(
 				props.className,
-				"overflow-hidden flex-col focus:outline-none gap-8",
+				"lg:overflow-hidden flex-col focus:outline-none gap-8",
 				desktopOnly ? "hidden lg:flex" : "flex",
 				flagFocused && flagClassName,
 				focused && focusClassName,
-				focused ? "shrink-0 lg:w-100" : "lg:w-screen-1/9 min-w-0"
+				focused ? "lg:shrink-0 lg:w-100" : "lg:w-screen-1/9 min-w-0"
 			)}
 			onFocus={({ currentTarget }) => {
 				if (!expandable) return;
@@ -112,7 +112,7 @@ export const Section: React.FC<SectionProps> = (props) => {
 			</div>
 			<div
 				className={twMerge(
-					"grow lg:w-100 p-8 lg:p-16 lg:pt-0 pt-0 h-full overflow-y-auto",
+					"grow lg:w-100 p-8 lg:p-16 lg:pt-0 pt-0 lg:h-full lg:overflow-y-auto",
 					focused ? "opacity-100" : "lg:opacity-0"
 				)}
 			>

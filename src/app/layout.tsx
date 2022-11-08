@@ -12,6 +12,7 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 	<html>
 		<head>
 			<title>Aries Clark</title>
+			<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 			<ClientScripts />
 		</head>
 		<body className={twMerge("text-white bg-black-200", inter.variable, nunito.variable)}>

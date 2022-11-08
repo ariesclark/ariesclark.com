@@ -3,7 +3,6 @@
 import { Github } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 import {
 	GithubContributionCalendar,
