@@ -13,6 +13,7 @@
     "@icons-pack/react-simple-icons": "^5.11.0",
     "@next/font": "^13.0.3",
     "@octokit/graphql": "^5.0.4",
+    "@vercel/og": "^0.0.20",
     "glob": "^8.0.3",
     "jotai": "^1.9.2",
     "ms": "^2.1.3",

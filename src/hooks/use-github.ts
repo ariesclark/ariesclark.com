@@ -5,7 +5,7 @@ import { GitHubMetadata } from "~/connections/github";
 
 const githubUrl = new URL("/api/github", siteUrl);
 
-const getGitHubMetadata = (): Promise<GitHubMetadata | null> => {
+export const getGitHubMetadata = (): Promise<GitHubMetadata | null> => {
 	return fetch(githubUrl).then(async (response) => {
 		if (!response.ok) return null;
 		return response.json();
