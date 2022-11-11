@@ -122,6 +122,7 @@ software issues, and a slew of other issues related to the management of a hosti
 
 const vercelUrl = process.env["NEXT_PUBLIC_VERCEL_URL"] as string;
 export const siteUrl = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000";
+export const localSiteUrl = typeof window === "undefined" ? siteUrl : "/";
 
 export const emailAddress = process.env["NEXT_PUBLIC_EMAIL_ADDRESS"]!;
 export const twitterUsername = process.env["NEXT_PUBLIC_TWITTER_USERNAME"]!;

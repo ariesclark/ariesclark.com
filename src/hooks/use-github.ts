@@ -1,12 +1,10 @@
 import useSWR from "swr";
 
-import { siteUrl } from "~/config";
+import { localSiteUrl } from "~/config";
 import { GitHubMetadata } from "~/connections/github";
 
-const githubUrl = new URL("/api/github", siteUrl);
-
 export const getGitHubMetadata = (): Promise<GitHubMetadata | null> => {
-	return fetch(githubUrl).then(async (response) => {
+	return fetch(`${localSiteUrl}api/github`).then(async (response) => {
 		if (!response.ok) return null;
 		return response.json();
 	});

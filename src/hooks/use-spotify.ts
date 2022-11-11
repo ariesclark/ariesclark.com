@@ -1,12 +1,10 @@
 import useSWR from "swr";
 
-import { siteUrl } from "~/config";
+import { localSiteUrl } from "~/config";
 import { SpotifyTrack } from "~/connections/spotify";
 
-const spotifyUrl = new URL("/api/spotify", siteUrl);
-
 const fetcher = (): Promise<SpotifyTrack | null> => {
-	return fetch(spotifyUrl).then(async (response) => {
+	return fetch(`${localSiteUrl}api/spotify`).then(async (response) => {
 		if (!response.ok) return null;
 		return response.json();
 	});
