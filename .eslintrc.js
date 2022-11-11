@@ -1,17 +1,11 @@
 require("@ariesclark/eslint-config/eslint-patch");
+process.env["ESLINT_PROJECT_ROOT"] = __dirname;
 
 module.exports = {
 	extends: [
+		"plugin:@next/next/recommended",
 		"@ariesclark/eslint-config",
-		"@ariesclark/eslint-config/dist/atoms/react",
-		"@ariesclark/eslint-config/dist/atoms/tailwindcss",
-		"plugin:@next/next/recommended"
-	],
-	parserOptions: {
-		project: "./tsconfig.json",
-		tsconfigRootDir: __dirname
-	},
-	rules: {
-		"no-mixed-operators": "off"
-	}
+		"@ariesclark/eslint-config/atoms/react",
+		"@ariesclark/eslint-config/atoms/tailwindcss"
+	]
 };
