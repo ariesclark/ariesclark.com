@@ -15,6 +15,10 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 		<head>
 			<title>Aries Clark</title>
 			<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+			<meta content="Aries Clark" property="og:title" />
+			<meta content="ariesclark.com" property="og:site_name" />
+			<meta content="summary_large_image" name="twitter:card" />
+			<meta content={`${siteUrl}/api/og`} name="twitter:image" />
 			<meta content={`${siteUrl}/api/og`} property="og:image" />
 			<ClientScripts />
 		</head>
