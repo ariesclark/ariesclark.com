@@ -32,6 +32,9 @@ export const ConnectionSpotify: React.FC = () => {
 
 	const [trackProgress, setTrackProgress] = useState(0);
 
+	// Stop playing the song snippet when the track changes.
+	useEffect(() => setPreviewPaused(true), [track?.url]);
+
 	/**
 	 * After a network request, we sync our assumed progress
 	 * with what the songs playback is actually at, this may
