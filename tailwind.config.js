@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 
 const colors = {
+	transparent: "transparent",
 	brand: {
 		twitter: "#1DA1F2",
 		spotify: "#1DB954"
@@ -37,6 +38,22 @@ module.exports = {
 			},
 			screens: {
 				"2xl": "1440px"
+			},
+			animation: {
+				"heartbeat": "heartbeat 1s linear infinite"
+			},
+			keyframes: {
+				heartbeat: {
+					"0%": {
+						transform: "scale(1)"
+					},
+					"10%": {
+						transform: "scale(1.1)"
+					},
+					"20%": {
+						transform: "scale(0.9)"
+					}
+				}
 			}
 		},
 		boxShadow: {
@@ -45,7 +62,8 @@ module.exports = {
 		},
 		fontFamily: {
 			inter: "var(--font-inter)",
-			nunito: "var(--font-nunito)"
+			nunito: "var(--font-nunito)",
+			itim: "var(---font-itim)"
 		},
 		colors
 	},

@@ -79,7 +79,7 @@ export const experience = [
 		logo: LogoStudioPaprika,
 		href: "https://studiopaprika.io/",
 		type: "Full Time",
-		title: "Lead Software Engineer",
+		title: "Software Engineer",
 		from: new Date("September 26, 2022"),
 		to: null,
 		description: `Building the first VR dating app, Flirtual. We're helping thousands of people 
@@ -91,7 +91,7 @@ friendship, and everything in between.`
 		logo: LogoRunesSecurity,
 		logoBackgroundColor: "black",
 		href: "https://runes.sh",
-		title: "Senior Software Engineer",
+		title: "Software Engineer",
 		from: new Date("April 15, 2022"),
 		to: new Date("August 15, 2022"),
 		description: `During my time at Runes Security, I worked on developing an open-source password 
@@ -101,7 +101,7 @@ manager that provides a non-intrusive, seamless secret management experience.`
 		name: "Altar Host",
 		logo: LogoAltarHost,
 		href: "/images/gone.png",
-		title: "Senior Software Engineer",
+		title: "Software Engineer",
 		from: new Date("December 4, 2020"),
 		to: new Date("February 2, 2022"),
 		description: `In order to establish a hosting provider, I independently engineered software to 

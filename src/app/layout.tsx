@@ -1,14 +1,16 @@
 import React from "react";
-import { Inter, Nunito } from "@next/font/google";
+import { Inter, Nunito, Itim } from "@next/font/google";
 import { twMerge } from "tailwind-merge";
+
+import { siteUrl } from "~/config";
 
 import { ClientScripts } from "./client-scripts";
 
 import "~/styles/globals.css";
-import { siteUrl } from "~/config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
+const itim = Itim({ weight: "400", subsets: ["latin"], variable: "--font-itim" });
 
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 	<html>
@@ -22,7 +24,14 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 			<meta content={`${siteUrl}/api/og`} property="og:image" />
 			<ClientScripts />
 		</head>
-		<body className={twMerge("text-white bg-black-200", inter.variable, nunito.variable)}>
+		<body
+			className={twMerge(
+				"bg-black-200 text-white-100",
+				inter.variable,
+				nunito.variable,
+				itim.variable
+			)}
+		>
 			{children}
 		</body>
 	</html>

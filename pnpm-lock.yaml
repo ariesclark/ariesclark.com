@@ -29,6 +29,7 @@ specifiers:
   react-markdown: ^8.0.4
   react-qr-code: ^2.0.11
   sass: ^1.57.1
+  simplex-noise: ^4.0.1
   spotify-web-api-node: ^5.0.2
   swr: ^2.0.0
   tailwind-merge: ^1.8.1
@@ -57,6 +58,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-markdown: 8.0.4_kzbn2opkn2327fwg5yzwzya5o4
   react-qr-code: 2.0.11_react@18.2.0
+  simplex-noise: 4.0.1
   spotify-web-api-node: 5.0.2
   swr: 2.0.0_react@18.2.0
   tailwind-merge: 1.8.1
@@ -4230,6 +4232,10 @@ packages:
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
+
+  /simplex-noise/4.0.1:
+    resolution: {integrity: sha512-zl/+bdSqW7HJOQ0oDbxrNYaF4F5ik0i7M6YOYmEoIJNtg16NpvWaTTM1Y7oV/7T0jFljawLgYPS81Uu2rsfo1A==}
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
