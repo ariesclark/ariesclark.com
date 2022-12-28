@@ -14,6 +14,7 @@ export function useMetadata() {
 					shortCode: "MST",
 					name: "Canada/Mountain"
 				},
+				spotify: null,
 				alive: true,
 				heartrate: 80
 			}
