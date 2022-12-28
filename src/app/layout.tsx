@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 import { siteUrl } from "~/config";
 
+import { Cursor } from "./cursor";
 import { ClientScripts } from "./client-scripts";
 
 import "~/styles/globals.css";
@@ -26,12 +27,13 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 		</head>
 		<body
 			className={twMerge(
-				"bg-black-200 text-white-100",
+				"h-screen w-screen overflow-y-auto bg-black-200 text-white-100 overflow-x-hidden",
 				inter.variable,
 				nunito.variable,
 				itim.variable
 			)}
 		>
+			<Cursor />
 			{children}
 		</body>
 	</html>

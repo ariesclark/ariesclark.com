@@ -40,7 +40,8 @@ module.exports = {
 				"2xl": "1440px"
 			},
 			animation: {
-				"heartbeat": "heartbeat 1s linear infinite"
+				"heartbeat": "heartbeat 1s linear infinite",
+				"cursor-in": "cursor 1s linear"
 			},
 			keyframes: {
 				heartbeat: {
@@ -52,6 +53,14 @@ module.exports = {
 					},
 					"20%": {
 						transform: "scale(0.9)"
+					}
+				},
+				cursor: {
+					"0%": {
+						transform: "scale(0)"
+					},
+					"100%": {
+						transform: "scale(1)"
 					}
 				}
 			}

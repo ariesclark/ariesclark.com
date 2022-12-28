@@ -135,9 +135,5 @@ export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"] as s
 export const twitterBearerToken = process.env["TWITTER_TOKEN"] as string;
 export const githubBearerToken = process.env["GITHUB_TOKEN"] as string;
 
-export const spotifyClientId = process.env["SPOTIFY_CLIENT_ID"] as string;
-export const spotifyClientSecret = process.env["SPOTIFY_CLIENT_SECRET"] as string;
-export const spotifyRefreshToken = process.env["SPOTIFY_REFRESH_TOKEN"] as string;
-
 export const emailHref = connections.find(({ href }) => href.includes("mailto"))!.href;
 export const twitterHref = connections.find(({ href }) => href.includes("twitter.com"))!.href;
