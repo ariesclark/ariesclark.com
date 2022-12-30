@@ -1,20 +1,21 @@
 "use client";
 
+import React from "react";
 import { SubtleLink } from "~/components/subtle-link";
 import { useDate } from "~/hooks/use-date";
 
 import { VeinyCard } from "./veiny-card";
 
-export const Time: React.FC = () => {
+export const Time: React.FC<React.ComponentProps<"div">> = (props) => {
 	const { date, timeZone, timeDifference } = useDate();
 
 	return (
-		<VeinyCard className="w-96" veinStyle={{ top: "over" }}>
-			<div className="z-30 flex flex-col">
-				<span suppressHydrationWarning className="text-xl">
+		<VeinyCard {...props} veinStyle={{ top: "over" }}>
+			<div className="flex flex-col">
+				<span suppressHydrationWarning className="">
 					{date.toLocaleString("en-CA", { dateStyle: "full" })}
 				</span>
-				<span suppressHydrationWarning className="text-4xl">
+				<span suppressHydrationWarning className="text-3xl">
 					{date.toLocaleString("en-CA", { timeStyle: "medium" })}{" "}
 					<SubtleLink external href={`https://time.is/${timeZone.shortCode}`}>
 						{timeZone.shortCode}

@@ -2,6 +2,7 @@
 
 import { Spotify } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
+import Link from "next/link";
 
 import { SubtleLink } from "~/components/subtle-link";
 import { useMetadata } from "~/hooks/use-metadata";
@@ -15,17 +16,19 @@ export const SpotifyCard: React.FC = () => {
 	return (
 		<VeinyCard className="w-96" veinStyle={{ top: "over" }}>
 			<div className="relative flex w-full gap-4">
-				<Image
-					className="h-16 w-16 rounded-xl"
-					height={spotify.image.height}
-					src={spotify.image.url}
-					width={spotify.image.width}
-					alt={`Spotify song cover for "${spotify.name}" by ${spotify.artists
-						.map((artist) => artist.name)
-						.join(", ")}.`}
-				/>
+				<Link className="h-16 w-16 shrink-0 overflow-hidden rounded-xl" href={spotify.url}>
+					<Image
+						className="h-full w-full"
+						height={spotify.image.height}
+						src={spotify.image.url}
+						width={spotify.image.width}
+						alt={`Spotify song cover for "${spotify.name}" by ${spotify.artists
+							.map((artist) => artist.name)
+							.join(", ")}.`}
+					/>
+				</Link>
 				<div className="flex w-full flex-col font-light tracking-tight">
-					<SubtleLink href={spotify.url}>{spotify.name}</SubtleLink>
+					<span>{spotify.name}</span>
 					<span className="text-xs">
 						{spotify.artists.map((artist) => (
 							<>

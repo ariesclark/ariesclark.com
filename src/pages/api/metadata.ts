@@ -17,9 +17,12 @@ export interface Metadata {
 
 export default async (req: NextApiRequest, res: NextApiResponse<Metadata>) => {
 	const [heartrate, spotify, heartClickCount] = await Promise.all([
-		getHeartrate(),
-		getCurrentSpotifyTrack(),
-		kv.get("heartClickCount").then(Number.parseInt)
+		getHeartrate().catch(() => 0),
+		getCurrentSpotifyTrack().catch(() => null),
+		kv
+			.get("heartClickCount")
+			.then(Number.parseInt)
+			.catch(() => 0)
 	]);
 
 	const alive = heartrate !== 0;

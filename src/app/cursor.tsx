@@ -23,7 +23,7 @@ export const Cursor: React.FC = () => {
 
 	return (
 		<div
-			className="pointer-events-none absolute z-50 will-change-transform"
+			className="pointer-events-none absolute z-50 hidden will-change-transform md:flex"
 			style={{ transform: `translate(${cursor.x}px,${cursor.y}px)` }}
 		>
 			<div className="mt-[-50%] ml-[-50%] h-64 w-64 animate-cursor-in rounded-full backdrop-hue-rotate-180 backdrop-invert" />

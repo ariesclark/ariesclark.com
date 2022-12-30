@@ -52,7 +52,7 @@ export const IntroductionScreen: React.FC = () => {
 						}}
 					>
 						<SoundToggleIcon className="h-12 w-12" />
-						<div className="absolute -top-8 left-16 flex w-max rotate-[16deg] flex-col">
+						<div className="absolute -top-8 left-16 flex w-max rotate-[16deg] animate-opacity-in flex-col [animation-delay:500ms]">
 							<span className="w-32 font-itim">{muted ? "Unmute audio" : "Mute audio"}.</span>
 							<ArrowTrendingDownIcon className="mt-4 w-10 rotate-90" strokeWidth={1} />
 						</div>
