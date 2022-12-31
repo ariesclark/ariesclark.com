@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-export const birthday = new Date(2002, 4, 29);
+export const bornAt = new Date(process.env["NEXT_PUBLIC_BORN_AT"]!);
 
 export const recentTechnologies = [
 	{
@@ -120,20 +120,17 @@ software issues, and a slew of other issues related to the management of a hosti
 	}
 ];
 
-const vercelUrl = process.env["NEXT_PUBLIC_VERCEL_URL"] as string;
+const vercelUrl = process.env["NEXT_PUBLIC_VERCEL_URL"]!;
 export const siteUrl = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000";
 export const localSiteUrl = typeof window === "undefined" ? siteUrl : "/";
 
+// Social connections
 export const emailAddress = process.env["NEXT_PUBLIC_EMAIL_ADDRESS"]!;
 export const twitterUsername = process.env["NEXT_PUBLIC_TWITTER_USERNAME"]!;
 export const githubUsername = process.env["NEXT_PUBLIC_GITHUB_USERNAME"]!;
 
-/** Google Analytics */
-export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"] as string;
-
-// Service credentials.
-export const twitterBearerToken = process.env["TWITTER_TOKEN"] as string;
-export const githubBearerToken = process.env["GITHUB_TOKEN"] as string;
-
 export const emailHref = connections.find(({ href }) => href.includes("mailto"))!.href;
 export const twitterHref = connections.find(({ href }) => href.includes("twitter.com"))!.href;
+
+/** Google Analytics */
+export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"]!;

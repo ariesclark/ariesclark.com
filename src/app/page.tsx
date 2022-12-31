@@ -141,12 +141,9 @@ const RootIndexPage: React.FC = () => {
 					aside === "right" && "opacity-100"
 				)}
 			>
-				<div className="flex flex-col gap-4 ">
+				<div className="flex flex-col gap-4">
 					{experience.map((item, itemIdx) => (
-						<div
-							className="mt-16 flex w-full max-w-xl gap-4 rounded-xl bg-black-100 p-4"
-							key={itemIdx}
-						>
+						<div className="flex w-full max-w-xl gap-4 rounded-xl bg-black-100 p-4" key={itemIdx}>
 							<div
 								className="aspect-square h-fit w-16 shrink-0 rounded-xl object-contain p-2"
 								style={{ backgroundColor: item.logoBackgroundColor ?? "white" }}
@@ -154,7 +151,7 @@ const RootIndexPage: React.FC = () => {
 								<Image alt={`Icon for ${item.name}`} className="h-full w-full" src={item.logo} />
 							</div>
 							<div className="flex flex-col gap-2">
-								<span className="font-semibold leading-none">{item.name}</span>
+								<span className="font-semibold leading-tight">{item.name}</span>
 								<p className="text-sm">{item.description}</p>
 							</div>
 						</div>

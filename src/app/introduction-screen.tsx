@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { twMerge } from "tailwind-merge";
 
+import { SubtleLink } from "~/components/subtle-link";
 import { useGlobalState } from "~/hooks/use-global-state";
 
 import { Heart } from "./heart";
@@ -52,14 +53,21 @@ export const IntroductionScreen: React.FC = () => {
 						}}
 					>
 						<SoundToggleIcon className="h-12 w-12" />
-						<div className="absolute -top-8 left-16 flex w-max rotate-[16deg] animate-opacity-in flex-col [animation-delay:500ms]">
+						<div className="absolute -top-8 left-16 flex w-max rotate-[16deg] animate-opacity-in flex-col [animation-delay:1000ms] [animation-duration:300ms]">
 							<span className="w-32 font-itim">{muted ? "Unmute audio" : "Mute audio"}.</span>
 							<ArrowTrendingDownIcon className="mt-4 w-10 rotate-90" strokeWidth={1} />
 						</div>
 					</button>
 				</div>
 				<span className="mt-8 px-8 text-white-400 md:px-0">
-					Aries Clark, Independent Software Engineer and Consultant. <br />
+					<SubtleLink
+						external={false}
+						href="https://ariesclark.com"
+						onClick={(event) => event.stopPropagation()}
+					>
+						Aries Clark
+					</SubtleLink>
+					, Software Engineer and Consultant. <br />
 					Copyright © {new Date().getFullYear()}, All rights reserved.
 				</span>
 			</div>
