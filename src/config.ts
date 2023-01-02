@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-export const birthday = new Date(2002, 4, 29);
+export const bornAt = new Date(process.env["NEXT_PUBLIC_BORN_AT"]!);
 
 export const recentTechnologies = [
 	{
@@ -79,7 +79,7 @@ export const experience = [
 		logo: LogoStudioPaprika,
 		href: "https://studiopaprika.io/",
 		type: "Full Time",
-		title: "Lead Software Engineer",
+		title: "Software Engineer",
 		from: new Date("September 26, 2022"),
 		to: null,
 		description: `Building the first VR dating app, Flirtual. We're helping thousands of people 
@@ -91,7 +91,7 @@ friendship, and everything in between.`
 		logo: LogoRunesSecurity,
 		logoBackgroundColor: "black",
 		href: "https://runes.sh",
-		title: "Senior Software Engineer",
+		title: "Software Engineer",
 		from: new Date("April 15, 2022"),
 		to: new Date("August 15, 2022"),
 		description: `During my time at Runes Security, I worked on developing an open-source password 
@@ -101,7 +101,7 @@ manager that provides a non-intrusive, seamless secret management experience.`
 		name: "Altar Host",
 		logo: LogoAltarHost,
 		href: "/images/gone.png",
-		title: "Senior Software Engineer",
+		title: "Software Engineer",
 		from: new Date("December 4, 2020"),
 		to: new Date("February 2, 2022"),
 		description: `In order to establish a hosting provider, I independently engineered software to 
@@ -120,24 +120,17 @@ software issues, and a slew of other issues related to the management of a hosti
 	}
 ];
 
-const vercelUrl = process.env["NEXT_PUBLIC_VERCEL_URL"] as string;
+const vercelUrl = process.env["NEXT_PUBLIC_VERCEL_URL"]!;
 export const siteUrl = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000";
 export const localSiteUrl = typeof window === "undefined" ? siteUrl : "/";
 
+// Social connections
 export const emailAddress = process.env["NEXT_PUBLIC_EMAIL_ADDRESS"]!;
 export const twitterUsername = process.env["NEXT_PUBLIC_TWITTER_USERNAME"]!;
 export const githubUsername = process.env["NEXT_PUBLIC_GITHUB_USERNAME"]!;
 
-/** Google Analytics */
-export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"] as string;
-
-// Service credentials.
-export const twitterBearerToken = process.env["TWITTER_TOKEN"] as string;
-export const githubBearerToken = process.env["GITHUB_TOKEN"] as string;
-
-export const spotifyClientId = process.env["SPOTIFY_CLIENT_ID"] as string;
-export const spotifyClientSecret = process.env["SPOTIFY_CLIENT_SECRET"] as string;
-export const spotifyRefreshToken = process.env["SPOTIFY_REFRESH_TOKEN"] as string;
-
 export const emailHref = connections.find(({ href }) => href.includes("mailto"))!.href;
 export const twitterHref = connections.find(({ href }) => href.includes("twitter.com"))!.href;
+
+/** Google Analytics */
+export const gaMeasurementId = process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"]!;

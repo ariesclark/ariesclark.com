@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 
 const colors = {
+	transparent: "transparent",
 	brand: {
 		twitter: "#1DA1F2",
 		spotify: "#1DB954"
@@ -37,6 +38,62 @@ module.exports = {
 			},
 			screens: {
 				"2xl": "1440px"
+			},
+			animation: {
+				heartbeat: "heartbeat 1s linear infinite",
+				"bounce-left": "bounce-left 1s linear infinite",
+				"bounce-right": "bounce-right 1s linear infinite",
+				"cursor-in": "cursor 1s linear",
+				"opacity-in": "opacity-in 1s linear"
+			},
+			keyframes: {
+				"opacity-in": {
+					"0%": {
+						opacity: "0"
+					},
+					"100%": {
+						opacity: "1"
+					}
+				},
+				heartbeat: {
+					"0%": {
+						transform: "scale(1)"
+					},
+					"10%": {
+						transform: "scale(1.1)"
+					},
+					"20%": {
+						transform: "scale(0.9)"
+					}
+				},
+				cursor: {
+					"0%": {
+						transform: "scale(0)"
+					},
+					"100%": {
+						transform: "scale(1)"
+					}
+				},
+				"bounce-left": {
+					"0%, 100%": {
+						transform: "translateX(25%)",
+						animationTimingFunction: "cubic-bezier(0.8,0,1,1)"
+					},
+					"50%": {
+						transform: "translateX(0%)",
+						animationTimingFunction: "cubic-bezier(0,0,0.2,1)"
+					}
+				},
+				"bounce-right": {
+					"0%, 100%": {
+						transform: "translateX(-25%)",
+						animationTimingFunction: "cubic-bezier(0.8,0,1,1)"
+					},
+					"50%": {
+						transform: "translateX(0%)",
+						animationTimingFunction: "cubic-bezier(0,0,0.2,1)"
+					}
+				}
 			}
 		},
 		boxShadow: {

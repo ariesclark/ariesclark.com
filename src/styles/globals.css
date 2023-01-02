@@ -2,14 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    @apply transition-all duration-500 delay-75;
-}
-
-*::-webkit-scrollbar {
-    @apply bg-transparent w-0
-}
-
-*[data-nextjs-scroll-focus-boundary] {
-    display: contents
+@layer components {
+    *::-webkit-scrollbar {
+        @apply bg-transparent w-0
+    }
 }
