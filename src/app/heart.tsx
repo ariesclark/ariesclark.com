@@ -1,14 +1,13 @@
 "use client";
 
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useEffect, useId, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { SubtleLink } from "~/components/subtle-link";
 import { useGlobalState } from "~/hooks/use-global-state";
-import { useMetadata } from "~/hooks/use-metadata";
 
 export type HeartProps = Omit<React.ComponentProps<"div">, "children"> & {
+	bpm?: number;
+	artificialBoost?: number;
 	noAudio?: boolean;
 	noText?: boolean;
 	children?: React.ReactNode;
@@ -39,20 +38,18 @@ const HeartGradient: React.FC<HeartGradientProps> = ({ animate = true, ...props 
 	);
 };
 
-export const Heart: React.FC<HeartProps> = ({ noAudio, noText, children, ...props }) => {
+export const Heart: React.FC<HeartProps> = ({
+	bpm = 0,
+	artificialBoost: artificialBoost = 0,
+	noAudio,
+	noText,
+	...props
+}) => {
 	const [{ loaded, muted }] = useGlobalState();
-	const { heartrate: bpm, heartClickCount, mutate } = useMetadata();
-
-	const [clickedAt, setClickedAt] = useState<number | null>(null);
+	const audioRef = useRef<HTMLAudioElement>(null);
 
 	// Beats per second.
 	const bps = bpm / 60;
-
-	useEffect(() => {
-		document.body.style.setProperty("--bps", bps.toFixed(2));
-	}, [bps]);
-
-	const audioRef = useRef<HTMLAudioElement>(null);
 
 	useEffect(() => {
 		if (!audioRef.current || noAudio) return;
@@ -73,73 +70,21 @@ export const Heart: React.FC<HeartProps> = ({ noAudio, noText, children, ...prop
 				"relative flex w-64 cursor-pointer select-none items-center justify-center",
 				props.className
 			)}
-			onClick={async (event) => {
-				props.onClick?.(event);
-				if (event.defaultPrevented) return;
-
-				setClickedAt(Date.now());
-
-				await mutate((metadata) =>
-					metadata ? { ...metadata, heartClickCount: metadata.heartClickCount + 1 } : void 0
-				);
-				await fetch("/api/click", { method: "POST" }).then(
-					(r) => r.json() as Promise<{ heartClickCount: number }>
-				);
-			}}
 		>
 			<HeartGradient
 				className="w-full animate-heartbeat text-red-100"
 				style={{ animationDuration: `${(1 / bps).toFixed(1)}s` }}
 			/>
 			{!noAudio && <audio loop ref={audioRef} src="/heartbeat.wav" />}
-			{children ||
-				(!noText && (
-					<div className="absolute -mt-4 flex flex-col items-center font-nunito text-white-100">
-						{clickedAt ? (
-							<div className="flex flex-col items-center">
-								<span className="text-3xl font-bold">
-									{heartClickCount.toLocaleString("en-CA")}
-								</span>
-								<span className="max-w-[26ch] text-center text-xs tracking-tight">
-									except with{" "}
-									<SubtleLink href="https://en.wikipedia.org/wiki/Eventual_consistency">
-										eventual consistency
-									</SubtleLink>
-									, and without any{" "}
-									<SubtleLink href="https://en.wikipedia.org/wiki/Atomicity_(database_systems)">
-										atomic updates
-									</SubtleLink>
-									.
-								</span>
-								<button
-									className="absolute top-20"
-									type="button"
-									onClick={(event) => {
-										event.stopPropagation();
-										setClickedAt(null);
-									}}
-								>
-									<XMarkIcon className="h-6 w-6" />
-								</button>
-								<button
-									className="absolute -top-6 left-2 -rotate-12 text-xs"
-									type="button"
-									onClick={(event) => {
-										event.stopPropagation();
-										setClickedAt(null);
-									}}
-								>
-									Click me
-								</button>
-							</div>
-						) : (
-							<>
-								<span className="text-3xl font-bold">{bpm} bpm</span>
-								<span className="text-sm">{bps.toFixed(1)} beats per second</span>
-							</>
-						)}
-					</div>
-				))}
+			{!noText && (
+				<div className="absolute -mt-4 flex flex-col items-center font-nunito text-white-100">
+					{artificialBoost !== 0 && (
+						<span className="absolute -top-4 text-xs text-white-300">+{artificialBoost}</span>
+					)}
+					<span className="text-3xl font-bold">{bpm} bpm</span>
+					<span className="text-sm">{bps.toFixed(1)} beats per second</span>
+				</div>
+			)}
 		</div>
 	);
 };

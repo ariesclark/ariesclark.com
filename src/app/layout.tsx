@@ -1,8 +1,8 @@
 import React from "react";
-import { Inter, Nunito, Itim } from "@next/font/google";
+import { Inter, Nunito } from "@next/font/google";
 import { twMerge } from "tailwind-merge";
 
-import { siteUrl } from "~/config";
+import { siteUrl, twitterUsername } from "~/config";
 
 import { Cursor } from "./cursor";
 import { ClientScripts } from "./client-scripts";
@@ -11,7 +11,6 @@ import "~/styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
-const itim = Itim({ weight: "400", subsets: ["latin"], variable: "--font-itim" });
 
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 	<html>
@@ -21,16 +20,16 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 			<meta content="Aries Clark" property="og:title" />
 			<meta content="ariesclark.com" property="og:site_name" />
 			<meta content="summary_large_image" name="twitter:card" />
-			<meta content={`${siteUrl}/api/og`} name="twitter:image" />
+			<meta content={twitterUsername} name="twitter:site" />
+			<meta content={twitterUsername} name="twitter:creator" />
 			<meta content={`${siteUrl}/api/og`} property="og:image" />
 			<ClientScripts />
 		</head>
 		<body
 			className={twMerge(
-				"h-screen w-screen overflow-y-auto bg-black-200 text-white-100 overflow-x-hidden",
+				"h-screen w-screen overflow-hidden bg-black-200 text-white-100",
 				inter.variable,
-				nunito.variable,
-				itim.variable
+				nunito.variable
 			)}
 		>
 			<Cursor />

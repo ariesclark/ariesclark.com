@@ -102,8 +102,7 @@ module.exports = {
 		},
 		fontFamily: {
 			inter: "var(--font-inter)",
-			nunito: "var(--font-nunito)",
-			itim: "var(---font-itim)"
+			nunito: "var(--font-nunito)"
 		},
 		colors
 	},

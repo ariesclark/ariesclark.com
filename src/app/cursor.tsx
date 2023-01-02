@@ -19,6 +19,7 @@ export const Cursor: React.FC = () => {
 		document.addEventListener("mousemove", onMouseMove);
 		return () => document.removeEventListener("mousemove", onMouseMove);
 	});
+
 	if (cursor.x < 0 || cursor.y < 0) return null;
 
 	return (
