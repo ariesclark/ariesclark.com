@@ -199,7 +199,7 @@ const RootIndexPage: React.FC = () => {
 										</Link>
 										<span className="text-xs text-white-400">
 											{item.to
-												? `${item.title} for ${timeSince(item.from, item.to)}`
+												? `${item.title} for ${timeSince(item.from, item.to)}.`
 												: `${item.title} since ${item.from.toLocaleString("en-CA", {
 														month: "long",
 														year: "numeric"

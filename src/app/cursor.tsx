@@ -13,11 +13,19 @@ export const Cursor: React.FC = () => {
 
 	useEffect(() => {
 		function onMouseMove(event: MouseEvent) {
-			setCursor({ x: event.pageX, y: event.pageY });
+			setCursor({ x: event.x, y: event.y });
+		}
+
+		function onResize() {
+			setCursor((cursor) => ({ ...cursor }));
 		}
 
 		document.addEventListener("mousemove", onMouseMove);
-		return () => document.removeEventListener("mousemove", onMouseMove);
+		document.addEventListener("resize", onResize);
+		return () => {
+			document.removeEventListener("mousemove", onMouseMove);
+			document.removeEventListener("resize", onResize);
+		};
 	});
 
 	if (cursor.x < 0 || cursor.y < 0) return null;
