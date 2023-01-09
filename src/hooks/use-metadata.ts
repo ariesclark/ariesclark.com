@@ -9,7 +9,6 @@ export function useMetadata() {
 		{
 			refreshInterval: 1000,
 			fallbackData: {
-				heartClickCount: 0,
 				timeZone: {
 					shortCode: "MST",
 					name: "Canada/Mountain"
