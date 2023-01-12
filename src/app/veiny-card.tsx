@@ -30,7 +30,9 @@ interface HeartVeinProps {
 }
 
 const HeartVein: React.FC<HeartVeinProps> = ({ style = { top: "direct", bottom: "direct" } }) => {
-	const { heartrate: bpm } = useMetadata();
+	const {
+		heartrate: { value: bpm }
+	} = useMetadata();
 	const gradientId = useId();
 
 	const [offset, setOffset] = useState(0);
