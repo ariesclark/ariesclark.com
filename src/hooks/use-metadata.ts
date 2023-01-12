@@ -11,11 +11,15 @@ export function useMetadata() {
 			fallbackData: {
 				timeZone: {
 					shortCode: "MST",
-					name: "Canada/Mountain"
+					name: "Canada/Mountain",
+					now: Date.now()
 				},
 				spotify: null,
 				alive: true,
-				heartrate: 80
+				heartrate: {
+					measuredAt: 0,
+					value: 0
+				}
 			}
 		}
 	);

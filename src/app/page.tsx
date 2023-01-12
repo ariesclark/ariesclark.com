@@ -5,17 +5,19 @@ import {
 	ArrowLongRightIcon,
 	ArrowTrendingDownIcon
 } from "@heroicons/react/24/outline";
-import Image from "next/image";
+import ms from "ms";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { connections, experience } from "~/config";
+import { connections } from "~/config";
 import { useGlobalState } from "~/hooks/use-global-state";
 import { useMetadata } from "~/hooks/use-metadata";
 
+import { ExperienceAside } from "./experience-aside";
 import { Heart } from "./heart";
 import { IntroductionScreen } from "./introduction-screen";
+import { SpotifyCard } from "./spotify";
 import { Time } from "./time";
 
 type AsideType = "preview" | "left" | "center" | "right";
@@ -55,16 +57,18 @@ const AsideButton: React.FC<AsideButtonProps> = ({ type, ...props }) => {
 	);
 };
 
+const minuteInMs = 60000;
+
 const RootIndexPage: React.FC = () => {
 	const [{ loaded }] = useGlobalState();
 	const [aside, setAside] = useState<AsideType>("preview");
 
-	const { heartrate } = useMetadata();
+	const { heartrate, alive, spotify } = useMetadata();
 
 	const [artificialBoost, setArtificialBoost] = useState(0);
 	const [highestArtificialBoost, setHighestArtificialBoost] = useState(0);
 
-	const bpm = heartrate + artificialBoost;
+	const bpm = heartrate.value + artificialBoost;
 
 	useEffect(() => {
 		setArtificialBoost(0);
@@ -74,11 +78,7 @@ const RootIndexPage: React.FC = () => {
 		if (loaded) setAside("center");
 	}, [loaded]);
 
-	function timeSince(from: Date, to: Date) {
-		if (to.getTime() - from.getTime() > 3.154e10)
-			return `${to.getFullYear() - from.getFullYear()} years`;
-		return `${Math.floor((to.getTime() - from.getTime()) / 2.628e9)} months`;
-	}
+	const timeSinceMeasure = Math.abs(heartrate.measuredAt - Date.now());
 
 	return (
 		<>
@@ -139,15 +139,37 @@ const RootIndexPage: React.FC = () => {
 						/>
 						<div
 							className={twMerge(
-								"absolute right-8 -bottom-10 flex rotate-12 flex-col-reverse items-end gap-2 transition-all md:right-0 md:bottom-auto md:top-0 md:flex-col md:gap-4",
+								"absolute -right-8 -bottom-12 flex w-52 rotate-12 flex-col-reverse items-end gap-2 transition-all md:right-0 md:bottom-auto md:-top-6 md:flex-col md:gap-4",
 								aside === "center" ? "delay-1000 duration-500" : "pointer-events-none opacity-0"
 							)}
 						>
-							<span className="select-none text-xs md:text-lg">
-								{highestArtificialBoost >= 10
-									? "Are you trying to kill me!?"
-									: "I'm still alive, somehow."}
-							</span>
+							<div className="flex w-full shrink-0 flex-col">
+								<span className="select-none text-sm md:text-lg">
+									{highestArtificialBoost >= 10
+										? "Are you trying to kill me!?"
+										: alive
+										? "I'm still alive, somehow."
+										: "I might be dead..?"}
+								</span>
+								<div className="flex select-none items-center gap-2 text-xs">
+									{timeSinceMeasure < minuteInMs && (
+										<span className="hidden rounded-md bg-gradient-to-br from-red-100 to-red-300 py-1 px-2 md:inline">
+											LIVE
+										</span>
+									)}
+									<span>
+										{timeSinceMeasure < minuteInMs ? (
+											`Accurate within ${ms(timeSinceMeasure, { long: true })}`
+										) : (
+											<>
+												Last measured {ms(timeSinceMeasure, { long: true })}
+												ago
+											</>
+										)}
+										.
+									</span>
+								</div>
+							</div>
 							<ArrowTrendingDownIcon
 								className="mr-auto w-10 rotate-180 md:mr-4 md:rotate-90"
 								strokeWidth={1}
@@ -155,9 +177,21 @@ const RootIndexPage: React.FC = () => {
 						</div>
 					</div>
 					<div className="absolute z-10 mt-96 h-full w-8 bg-gradient-to-r from-red-100 to-red-300" />
-					<Time
-						className={twMerge("transition-all", aside === "center" ? "delay-300" : "opacity-0")}
-					/>
+					<div className="relative">
+						{spotify && (
+							<div
+								className={twMerge(
+									"absolute right-[-26rem] z-10 hidden md:flex",
+									aside === "center" ? "delay-1000 duration-500" : "pointer-events-none opacity-0"
+								)}
+							>
+								<SpotifyCard />
+							</div>
+						)}
+						<Time
+							className={twMerge("transition-all", aside === "center" ? "delay-300" : "opacity-0")}
+						/>
+					</div>
 				</div>
 			</div>
 			<AsideButton
@@ -170,49 +204,7 @@ const RootIndexPage: React.FC = () => {
 				type="right"
 				onClick={() => setAside((aside) => (aside === "left" ? "center" : "right"))}
 			/>
-			<div
-				className={twMerge(
-					"pointer-events-none absolute top-0 flex h-screen w-screen p-8 opacity-0 transition-opacity md:items-center md:justify-center",
-					aside === "right" && "opacity-100"
-				)}
-			>
-				<div className="mt-16 flex flex-col gap-8">
-					<span className="font-inter text-2xl font-bold">Jobs & experience</span>
-					<div className="flex h-full flex-col gap-4 overflow-y-auto">
-						{experience.map((item, itemIdx) => (
-							<div
-								className="pointer-events-auto flex w-full max-w-xl select-none gap-4 rounded-xl bg-black-100 p-4"
-								key={itemIdx}
-							>
-								<Link
-									className="aspect-square h-fit w-12 shrink-0 rounded-xl object-contain p-2 md:w-16"
-									href={item.href}
-									style={{ backgroundColor: item.logoBackgroundColor ?? "white" }}
-									target="_blank"
-								>
-									<Image alt={`Icon for ${item.name}`} className="h-full w-full" src={item.logo} />
-								</Link>
-								<div className="flex flex-col gap-2">
-									<div className="flex flex-col items-baseline gap-1 md:flex-row md:gap-2">
-										<Link className="font-semibold leading-none" href={item.href} target="_blank">
-											{item.name}
-										</Link>
-										<span className="text-xs text-white-400">
-											{item.to
-												? `${item.title} for ${timeSince(item.from, item.to)}.`
-												: `${item.title} since ${item.from.toLocaleString("en-CA", {
-														month: "long",
-														year: "numeric"
-												  })}.`}
-										</span>
-									</div>
-									<p className="text-xs md:text-sm">{item.description}</p>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
+			<ExperienceAside className={twMerge(aside === "right" && "opacity-100")} />
 		</>
 	);
 };

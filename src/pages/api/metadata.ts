@@ -1,4 +1,4 @@
-import { getHeartrate } from "~/pulsoid";
+import { getHeartrate, Heartrate } from "~/pulsoid";
 import { getCurrentSpotifyTrack, SpotifyTrack } from "~/spotify";
 
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -7,19 +7,18 @@ export interface Metadata {
 	timeZone: {
 		shortCode: string;
 		name: string;
+		now: number;
 	};
 	spotify: SpotifyTrack | null;
 	alive: boolean;
-	heartrate: number;
+	heartrate: Heartrate;
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse<Metadata>) => {
-	const [heartrate, spotify] = await Promise.all([
-		getHeartrate().catch(() => 0),
-		getCurrentSpotifyTrack().catch(() => null)
-	]);
+const dayInMs = 8.64e7;
 
-	const alive = heartrate !== 0;
+export default async (req: NextApiRequest, res: NextApiResponse<Metadata>) => {
+	const [heartrate, spotify] = await Promise.all([getHeartrate(), getCurrentSpotifyTrack()]);
+	const alive = heartrate.value !== 0 && Date.now() - heartrate.measuredAt <= dayInMs;
 
 	res
 		.status(200)
@@ -27,7 +26,8 @@ export default async (req: NextApiRequest, res: NextApiResponse<Metadata>) => {
 		.json({
 			timeZone: {
 				shortCode: "MST",
-				name: "Canada/Mountain"
+				name: "Canada/Mountain",
+				now: Date.now()
 			},
 			spotify,
 			alive,

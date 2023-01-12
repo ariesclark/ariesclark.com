@@ -9,7 +9,7 @@ const spotify = new Spotify({
 	clientId: spotifyClientId,
 	clientSecret: spotifyClientSecret,
 	refreshToken: spotifyRefreshToken,
-	redirectUri: "http://localhost:300/spotify"
+	redirectUri: "http://localhost:3000/spotify"
 });
 
 export type SpotifyTrack = NonNullable<Awaited<ReturnType<typeof getCurrentSpotifyTrack>>>;
