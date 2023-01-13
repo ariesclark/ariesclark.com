@@ -159,12 +159,9 @@ const RootIndexPage: React.FC = () => {
 									)}
 									<span>
 										{timeSinceMeasure < minuteInMs ? (
-											`Accurate within ${ms(timeSinceMeasure, { long: true })}`
+											<>Accurate within {ms(timeSinceMeasure, { long: true })}</>
 										) : (
-											<>
-												Last measured {ms(timeSinceMeasure, { long: true })}
-												ago
-											</>
+											<>Last measured {ms(timeSinceMeasure, { long: true })} ago</>
 										)}
 										.
 									</span>

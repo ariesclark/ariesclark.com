@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Metadata>) => {
 		.setHeader("cache-control", "public, s-maxage=1, stale-while-revalidate=4")
 		.json({
 			timeZone: {
-				shortCode: "MST",
+				shortCode: "MT",
 				name: "Canada/Mountain",
 				now: Date.now()
 			},
