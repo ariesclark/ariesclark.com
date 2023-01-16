@@ -20,7 +20,7 @@ import { IntroductionScreen } from "./introduction-screen";
 import { SpotifyCard } from "./spotify";
 import { Time } from "./time";
 
-type AsideType = "preview" | "left" | "center" | "right";
+export type AsideType = "preview" | "left" | "center" | "right";
 
 type AsideButtonProps = Omit<React.ComponentProps<"button">, "type"> & {
 	type: Exclude<AsideType, "center">;
@@ -139,7 +139,7 @@ const RootIndexPage: React.FC = () => {
 						/>
 						<div
 							className={twMerge(
-								"absolute -right-8 -bottom-12 flex w-52 rotate-12 flex-col-reverse items-end gap-2 transition-all md:right-0 md:bottom-auto md:-top-6 md:flex-col md:gap-4",
+								"absolute right-2 -bottom-16 flex w-fit rotate-12 flex-col-reverse items-end gap-2 transition-all md:right-0 md:bottom-auto md:-top-6 md:w-52 md:flex-col md:gap-4",
 								aside === "center" ? "delay-1000 duration-500" : "pointer-events-none opacity-0"
 							)}
 						>
@@ -201,7 +201,7 @@ const RootIndexPage: React.FC = () => {
 				type="right"
 				onClick={() => setAside((aside) => (aside === "left" ? "center" : "right"))}
 			/>
-			<ExperienceAside className={twMerge(aside === "right" && "opacity-100")} />
+			<ExperienceAside aside={aside} className={twMerge(aside === "right" && "opacity-100")} />
 		</>
 	);
 };

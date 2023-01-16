@@ -27,7 +27,7 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
 		</head>
 		<body
 			className={twMerge(
-				"h-screen w-screen overflow-hidden bg-black-200 text-white-100",
+				"relative h-screen w-screen overflow-hidden bg-black-200 text-white-100",
 				inter.variable,
 				nunito.variable
 			)}

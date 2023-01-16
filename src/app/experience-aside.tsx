@@ -5,13 +5,17 @@ import { twMerge } from "tailwind-merge";
 
 import { experience } from "~/config";
 
+import { AsideType } from "./page";
+
 function timeSince(from: Date, to: Date) {
 	if (to.getTime() - from.getTime() > 3.154e10)
 		return `${to.getFullYear() - from.getFullYear()} years`;
 	return `${Math.floor((to.getTime() - from.getTime()) / 2.628e9)} months`;
 }
 
-export const ExperienceAside: React.FC<React.ComponentProps<"div">> = (props) => {
+type ExperienceAsideProps = React.ComponentProps<"div"> & { aside: AsideType };
+
+export const ExperienceAside: React.FC<ExperienceAsideProps> = ({ aside, ...props }) => {
 	return (
 		<div
 			{...props}
@@ -25,8 +29,14 @@ export const ExperienceAside: React.FC<React.ComponentProps<"div">> = (props) =>
 				<div className="flex h-full flex-col gap-4 overflow-y-auto">
 					{experience.map((item, itemIdx) => (
 						<div
-							className="pointer-events-auto flex w-full max-w-xl select-none gap-4 rounded-xl bg-black-100 p-4"
 							key={itemIdx}
+							className={twMerge(
+								"pointer-events-auto flex w-full max-w-xl select-none gap-4 rounded-xl bg-black-100 p-4 transition-opacity",
+								aside === "right" ? "opacity-100" : "opacity-0"
+							)}
+							style={{
+								transitionDelay: `${itemIdx / 5}s`
+							}}
 						>
 							<Link
 								className="aspect-square h-fit w-12 shrink-0 rounded-xl object-contain p-2 md:w-16"
