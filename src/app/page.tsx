@@ -201,7 +201,10 @@ const RootIndexPage: React.FC = () => {
 				type="right"
 				onClick={() => setAside((aside) => (aside === "left" ? "center" : "right"))}
 			/>
-			<ExperienceAside aside={aside} className={twMerge(aside === "right" && "opacity-100")} />
+			<ExperienceAside
+				aside={aside}
+				className={twMerge(aside === "right" ? "opacity-100" : "pointer-events-none")}
+			/>
 		</>
 	);
 };

@@ -20,7 +20,7 @@ export const ExperienceAside: React.FC<ExperienceAsideProps> = ({ aside, ...prop
 		<div
 			{...props}
 			className={twMerge(
-				"pointer-events-none absolute top-0 flex h-screen w-screen p-8 opacity-0 transition-opacity md:items-center md:justify-center",
+				"absolute top-0 flex h-screen w-screen p-8 opacity-0 transition-opacity md:items-center md:justify-center",
 				props.className
 			)}
 		>
@@ -31,7 +31,7 @@ export const ExperienceAside: React.FC<ExperienceAsideProps> = ({ aside, ...prop
 						<div
 							key={itemIdx}
 							className={twMerge(
-								"pointer-events-auto flex w-full max-w-xl select-none gap-4 rounded-xl bg-black-100 p-4 transition-opacity",
+								"flex w-full max-w-xl select-none gap-4 rounded-xl bg-black-100 p-4 transition-opacity",
 								aside === "right" ? "opacity-100" : "opacity-0"
 							)}
 							style={{
