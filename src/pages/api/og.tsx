@@ -2,7 +2,7 @@
 import { ImageResponse } from "@vercel/og";
 
 export const config = {
-	runtime: "experimental-edge"
+	runtime: "edge"
 };
 
 export default async function () {
@@ -14,7 +14,7 @@ export default async function () {
 			>
 				<div tw="flex items-center justify-center flex-col absolute w-full h-full ">
 					<span tw="text-8xl">Aries Clark</span>
-					<span tw="text-4xl">🇨🇦 Canadian software engineer</span>
+					<span tw="text-4xl">&#x1F1E8;&#x1F1E6; Canadian software engineer</span>
 				</div>
 			</div>
 		),

@@ -1,6 +1,6 @@
 "use client";
 
-import { Spotify } from "@icons-pack/react-simple-icons";
+import { SiSpotify } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ export const SpotifyCard: React.FC = () => {
 	return (
 		<div className="relative flex w-96 flex-col gap-4 rounded-xl bg-white-300 p-8">
 			<div className="absolute -top-4 -left-4 rounded-full bg-white-300 p-4">
-				<Spotify className="h-8 w-8 text-brand-spotify" />
+				<SiSpotify className="h-8 w-8 text-brand-spotify" />
 			</div>
 			<div className="flex gap-4">
 				<Link className="shrink-0" href={spotify.url}>

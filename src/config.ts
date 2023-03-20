@@ -43,28 +43,28 @@ export const recentTechnologies = [
 	}
 ];
 
-import { Github, Gmail, Linkedin, Twitter } from "@icons-pack/react-simple-icons";
+import { SiGithub, SiGmail, SiLinkedin, SiTwitter } from "@icons-pack/react-simple-icons";
 
 export const connections = [
 	{
 		name: "Email",
 		href: "mailto:me@ariesclark.com",
-		Icon: Gmail
+		Icon: SiGmail
 	},
 	{
 		name: "LinkedIn",
 		href: "https://linkedin.com/in/ariesclark",
-		Icon: Linkedin
+		Icon: SiLinkedin
 	},
 	{
 		name: "Twitter",
 		href: "https://twitter.com/ariesrclark",
-		Icon: Twitter
+		Icon: SiTwitter
 	},
 	{
 		name: "GitHub",
 		href: "https://github.com/ariesclark",
-		Icon: Github
+		Icon: SiGithub
 	}
 ];
 

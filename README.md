@@ -3,6 +3,3 @@
 
 ### Using this repository.
 > This repository is licensed under [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/) and is free to fork and reuse for yourself as long as you follow the license conditions, but I encourage attribution in the footer back to either [this repository](https://github.com/ariesclark/ariesclark.com) or [my website](https://ariesclark.com).
-
-### Inspiration.
-1. https://brittanychiang.com

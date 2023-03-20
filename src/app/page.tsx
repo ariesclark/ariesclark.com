@@ -34,7 +34,7 @@ const AsideButton: React.FC<AsideButtonProps> = ({ type, ...props }) => {
 			type="button"
 			{...props}
 			className={twMerge(
-				"absolute top-0 flex h-full justify-center px-8 transition-opacity md:items-center md:p-16 ",
+				"absolute top-0 flex h-full justify-center px-8 transition-opacity md:items-center md:p-16",
 				type === "left" ? "left-0" : "right-0",
 				props.className
 			)}
@@ -90,9 +90,19 @@ const RootIndexPage: React.FC = () => {
 					aside === "center" ? "z-10 w-screen-1/2 delay-300" : "-z-10 w-full"
 				)}
 			/>
+			<AsideButton
+				className={twMerge("transition-all", aside === "center" && "pointer-events-none opacity-0")}
+				type="left"
+				onClick={() => setAside("center")}
+			/>
+			<AsideButton
+				className={twMerge("transition-all", aside === "right" && "pointer-events-none opacity-0")}
+				type="right"
+				onClick={() => setAside((aside) => (aside === "left" ? "center" : "right"))}
+			/>
 			<div
 				className={twMerge(
-					"flex h-screen w-full flex-col items-center justify-center gap-32 font-nunito transition-transform duration-300",
+					"pointer-events-none flex h-screen w-full flex-col items-center justify-center gap-32 font-nunito transition-transform duration-300",
 					loaded ? "opacity-100" : "opacity-0",
 					aside === "right" ? "-translate-x-full" : ""
 				)}
@@ -111,7 +121,7 @@ const RootIndexPage: React.FC = () => {
 						<div
 							className={twMerge(
 								"flex w-fit gap-4 text-white-100 md:z-20 md:flex-col md:text-black-100",
-								aside === "center" ? "delay-500 duration-500" : "pointer-events-none opacity-0"
+								aside === "center" ? "pointer-events-auto delay-500 duration-500" : "opacity-0"
 							)}
 						>
 							{connections.map(({ name, Icon, href }) => (
@@ -123,7 +133,7 @@ const RootIndexPage: React.FC = () => {
 						<Heart
 							artificialBoost={artificialBoost}
 							bpm={bpm}
-							className="z-20 mt-8"
+							className={twMerge("z-20 mt-8", aside === "center" && "pointer-events-auto")}
 							onClick={() => {
 								setArtificialBoost((artificialBoost) => {
 									const newArtificialBoost = artificialBoost + 1;
@@ -179,28 +189,22 @@ const RootIndexPage: React.FC = () => {
 							<div
 								className={twMerge(
 									"absolute right-[-26rem] z-10 hidden md:flex",
-									aside === "center" ? "delay-1000 duration-500" : "pointer-events-none opacity-0"
+									aside === "center" ? "pointer-events-auto delay-1000 duration-500" : "opacity-0"
 								)}
 							>
 								<SpotifyCard />
 							</div>
 						)}
 						<Time
-							className={twMerge("transition-all", aside === "center" ? "delay-300" : "opacity-0")}
+							className={twMerge(
+								"transition-all",
+								aside === "center" ? "pointer-events-auto delay-300" : "opacity-0"
+							)}
 						/>
 					</div>
 				</div>
 			</div>
-			<AsideButton
-				className={twMerge("transition-all", aside === "center" && "pointer-events-none opacity-0")}
-				type="left"
-				onClick={() => setAside("center")}
-			/>
-			<AsideButton
-				className={twMerge("transition-all", aside === "right" && "pointer-events-none opacity-0")}
-				type="right"
-				onClick={() => setAside((aside) => (aside === "left" ? "center" : "right"))}
-			/>
+
 			<ExperienceAside
 				aside={aside}
 				className={twMerge(aside === "right" ? "opacity-100" : "pointer-events-none")}

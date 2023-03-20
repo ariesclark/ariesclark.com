@@ -1,29 +1,3 @@
-/* eslint-disable no-undef */
-
-const colors = {
-	transparent: "transparent",
-	brand: {
-		twitter: "#1DA1F2",
-		spotify: "#1DB954"
-	},
-	black: {
-		100: "#191919",
-		200: "#141414",
-		300: "#0a0a0a"
-	},
-	white: {
-		100: "#f5f5f5",
-		200: "#ebebeb",
-		300: "#e0e0e0",
-		400: "#d6d6d6"
-	},
-	red: {
-		100: "#cf4f4f",
-		200: "#ca3f3f",
-		300: "#c03535"
-	}
-};
-
 /** @type import("tailwindcss").Config */
 module.exports = {
 	content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -104,7 +78,29 @@ module.exports = {
 			inter: "var(--font-inter)",
 			nunito: "var(--font-nunito)"
 		},
-		colors
+		colors: {
+			transparent: "transparent",
+			brand: {
+				twitter: "#1DA1F2",
+				spotify: "#1DB954"
+			},
+			black: {
+				100: "#191919",
+				200: "#141414",
+				300: "#0a0a0a"
+			},
+			white: {
+				100: "#f5f5f5",
+				200: "#ebebeb",
+				300: "#e0e0e0",
+				400: "#d6d6d6"
+			},
+			red: {
+				100: "#cf4f4f",
+				200: "#ca3f3f",
+				300: "#c03535"
+			}
+		}
 	},
 	plugins: [require("tailwind-scrollbar"), require("tailwindcss-hocus")]
 };
