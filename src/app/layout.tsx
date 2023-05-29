@@ -34,7 +34,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	const metadata = await getMetadata();
 
 	return (
-		<html>
+		<html lang="en">
 			<head>
 				<ClientScripts />
 			</head>

@@ -72,6 +72,7 @@ import LogoStudioPaprika from "~/../public/images/logos/studio-paprika.png";
 import LogoRunesSecurity from "~/../public/images/logos/runes-security.png";
 import LogoAltarHost from "~/../public/images/logos/altarhost.png";
 import LogoPloxHost from "~/../public/images/logos/ploxhost.jpg";
+import GoneImage from "~/../public/images/gone.png";
 
 export const experience = [
 	{
@@ -100,7 +101,7 @@ manager that provides a non-intrusive, seamless secret management experience.`
 	{
 		name: "Altar Host",
 		logo: LogoAltarHost,
-		href: "/images/gone.png",
+		href: GoneImage.src,
 		title: "Software Engineer",
 		from: new Date("December 4, 2020"),
 		to: new Date("February 2, 2022"),

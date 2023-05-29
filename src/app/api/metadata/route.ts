@@ -15,6 +15,9 @@ export interface Metadata {
 	heartrate: Heartrate;
 }
 
+export const runtime = "edge";
+export const revalidate = 1;
+
 const dayInMs = 8.64e7;
 
 export const getMetadata = cache(async (): Promise<Metadata> => {
