@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { Metadata } from "~/app/api/metadata/route";
+import { Metadata } from "~/metadata";
 
 export function useMetadata() {
 	const { data, mutate } = useSWR<Metadata>(
