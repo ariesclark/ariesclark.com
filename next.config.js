@@ -1,12 +1,18 @@
 /** @type {import("next").NextConfig} */
 module.exports = {
 	reactStrictMode: true,
-	experimental: {
-		appDir: true,
-		enableUndici: false
-	},
 	images: {
 		domains: ["pbs.twimg.com", "i.scdn.co", "avatars.githubusercontent.com"]
+	},
+	modularizeImports: {
+		"@heroicons/react/24/outline": {
+			transform: "@heroicons/react/24/outline/{{member}}",
+			preventFullImport: true
+		},
+		"@heroicons/react/24/solid": {
+			transform: "@heroicons/react/24/solid/{{member}}",
+			preventFullImport: true
+		}
 	},
 	headers: async () => {
 		return [

@@ -1,41 +1,61 @@
 import React from "react";
-import { Inter, Nunito } from "@next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import { twMerge } from "tailwind-merge";
+import { Metadata } from "next";
 
-import { siteUrl, twitterUsername } from "~/config";
+import { twitterUsername } from "~/config";
+import { SWRConfig } from "~/components/swr-config";
 
 import { Cursor } from "./cursor";
 import { ClientScripts } from "./client-scripts";
+import { getMetadata } from "./api/metadata/route";
 
 import "~/styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
 
-const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
-	<html>
-		<head>
-			<title>Aries Clark</title>
-			<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-			<meta content="Aries Clark" property="og:title" />
-			<meta content="ariesclark.com" property="og:site_name" />
-			<meta content="summary_large_image" name="twitter:card" />
-			<meta content={twitterUsername} name="twitter:site" />
-			<meta content={twitterUsername} name="twitter:creator" />
-			<meta content={`${siteUrl}/api/og`} property="og:image" />
-			<ClientScripts />
-		</head>
-		<body
-			className={twMerge(
-				"relative h-screen w-screen overflow-hidden bg-black-200 text-white-100",
-				inter.variable,
-				nunito.variable
-			)}
-		>
-			<Cursor />
-			{children}
-		</body>
-	</html>
-);
+export const metadata: Metadata = {
+	title: "Aries Clark",
+	description: "Canadian software engineer",
+	viewport: "width=device-width, initial-scale=1.0",
+	twitter: {
+		card: "summary_large_image",
+		site: twitterUsername,
+		creator: twitterUsername
+	},
+	openGraph: {
+		siteName: "ariesclark.com",
+		title: "Aries Clark"
+	}
+};
 
-export default RootLayout;
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+	const metadata = await getMetadata();
+
+	return (
+		<html>
+			<head>
+				<ClientScripts />
+			</head>
+			<SWRConfig
+				value={{
+					fallback: {
+						metadata
+					}
+				}}
+			>
+				<body
+					className={twMerge(
+						"relative h-screen w-screen overflow-hidden bg-black-200 text-white-100",
+						inter.variable,
+						nunito.variable
+					)}
+				>
+					<Cursor />
+					{children}
+				</body>
+			</SWRConfig>
+		</html>
+	);
+}

@@ -31,7 +31,7 @@ export const SpotifyCard: React.FC = () => {
 
 	return (
 		<div className="relative flex w-96 flex-col gap-4 rounded-xl bg-white-300 p-8">
-			<div className="absolute -top-4 -left-4 rounded-full bg-white-300 p-4">
+			<div className="absolute -left-4 -top-4 rounded-full bg-white-300 p-4">
 				<SiSpotify className="h-8 w-8 text-brand-spotify" />
 			</div>
 			<div className="flex gap-4">

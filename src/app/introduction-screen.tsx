@@ -18,7 +18,7 @@ export const IntroductionScreen: React.FC = () => {
 	return (
 		<div
 			className={twMerge(
-				"fixed top-0 left-0 z-40 flex h-full w-full cursor-pointer items-center justify-center bg-black-100 font-nunito transition-all duration-500",
+				"fixed left-0 top-0 z-40 flex h-full w-full cursor-pointer items-center justify-center bg-black-100 font-nunito transition-all duration-500",
 				loaded ? "pointer-events-none opacity-0" : "opacity-100"
 			)}
 			onClick={() => setGlobalState((globalState) => ({ ...globalState, loaded: true }))}
@@ -41,7 +41,7 @@ export const IntroductionScreen: React.FC = () => {
 					<Heart noAudio noText className="mx-auto px-8 md:mx-0 md:px-0" />
 				</div>
 				<div className="flex flex-col-reverse gap-8 px-8 md:flex-row md:px-0">
-					<button className="rounded-xl bg-white-100 py-4 px-6" type="button">
+					<button className="rounded-xl bg-white-100 px-6 py-4" type="button">
 						<span className="font-inter text-black-100">Click anywhere to continue</span>
 					</button>
 					<button

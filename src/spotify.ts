@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+// eslint-disable-next-line import/named
+import { cache } from "react";
 import Spotify from "spotify-web-api-node";
 
 export const spotifyClientId = process.env["SPOTIFY_CLIENT_ID"] as string;
@@ -14,7 +16,7 @@ const spotify = new Spotify({
 
 export type SpotifyTrack = NonNullable<Awaited<ReturnType<typeof getCurrentSpotifyTrack>>>;
 
-export async function getCurrentSpotifyTrack() {
+export const getCurrentSpotifyTrack = cache(async () => {
 	const {
 		body: { access_token }
 	} = await spotify.refreshAccessToken();
@@ -37,4 +39,4 @@ export async function getCurrentSpotifyTrack() {
 		progress: progress_ms,
 		length: item.duration_ms
 	};
-}
+});

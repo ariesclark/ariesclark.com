@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/server";
 
-export const config = {
-	runtime: "edge"
-};
+export const runtime = "edge";
+export const dynamic = "force-cache";
 
-export default async function () {
+export default function Image() {
 	return new ImageResponse(
 		(
 			<div

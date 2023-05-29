@@ -59,7 +59,7 @@ const AsideButton: React.FC<AsideButtonProps> = ({ type, ...props }) => {
 
 const minuteInMs = 60000;
 
-const RootIndexPage: React.FC = () => {
+export default function RootIndexPage() {
 	const [{ loaded }] = useGlobalState();
 	const [aside, setAside] = useState<AsideType>("preview");
 
@@ -72,7 +72,7 @@ const RootIndexPage: React.FC = () => {
 
 	useEffect(() => {
 		setArtificialBoost(0);
-	}, [heartrate]);
+	}, [heartrate.measuredAt]);
 
 	useEffect(() => {
 		if (loaded) setAside("center");
@@ -85,7 +85,7 @@ const RootIndexPage: React.FC = () => {
 			<IntroductionScreen />
 			<div
 				className={twMerge(
-					"pointer-events-none fixed top-0 left-0 h-full backdrop-hue-rotate-180 backdrop-invert transition-all duration-300",
+					"pointer-events-none fixed left-0 top-0 h-full backdrop-hue-rotate-180 backdrop-invert transition-all duration-300",
 					aside === "right" || aside === "preview" ? "-translate-x-full" : "",
 					aside === "center" ? "z-10 w-screen-1/2 delay-300" : "-z-10 w-full"
 				)}
@@ -114,8 +114,8 @@ const RootIndexPage: React.FC = () => {
 							aside === "center" ? "delay-300" : "opacity-0"
 						)}
 					>
-						<span className="text-6xl font-bold md:text-8xl">Aries Clark</span>
-						<span className="text-2xl md:text-4xl">Software Engineer</span>
+						<h1 className="text-6xl font-bold md:text-8xl">Aries Clark</h1>
+						<h2 className="text-2xl md:text-4xl">Software Engineer</h2>
 					</div>
 					<div className="relative mb-16 flex h-full w-full max-w-md grid-cols-[1fr,max-content,1fr] flex-col items-center justify-center md:mb-0 md:grid">
 						<div
@@ -149,7 +149,7 @@ const RootIndexPage: React.FC = () => {
 						/>
 						<div
 							className={twMerge(
-								"absolute right-2 -bottom-16 flex w-fit rotate-12 flex-col-reverse items-end gap-2 transition-all md:right-0 md:bottom-auto md:-top-6 md:w-52 md:flex-col md:gap-4",
+								"absolute -bottom-16 right-2 flex w-fit rotate-12 flex-col-reverse items-end gap-2 transition-all md:-top-6 md:bottom-auto md:right-0 md:w-52 md:flex-col md:gap-4",
 								aside === "center" ? "delay-1000 duration-500" : "pointer-events-none opacity-0"
 							)}
 						>
@@ -163,7 +163,7 @@ const RootIndexPage: React.FC = () => {
 								</span>
 								<div className="flex select-none items-center gap-2 text-xs">
 									{timeSinceMeasure < minuteInMs && (
-										<span className="hidden rounded-md bg-gradient-to-br from-red-100 to-red-300 py-1 px-2 md:inline">
+										<span className="hidden rounded-md bg-gradient-to-br from-red-100 to-red-300 px-2 py-1 md:inline">
 											LIVE
 										</span>
 									)}
@@ -204,13 +204,10 @@ const RootIndexPage: React.FC = () => {
 					</div>
 				</div>
 			</div>
-
 			<ExperienceAside
 				aside={aside}
 				className={twMerge(aside === "right" ? "opacity-100" : "pointer-events-none")}
 			/>
 		</>
 	);
-};
-
-export default RootIndexPage;
+}
