@@ -8,9 +8,9 @@ import { SWRConfig } from "~/components/swr-config";
 
 import { Cursor } from "./cursor";
 import { ClientScripts } from "./client-scripts";
-import { getMetadata } from "./api/metadata/route";
 
 import "~/styles/globals.css";
+import { getMetadata } from "~/metadata";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
