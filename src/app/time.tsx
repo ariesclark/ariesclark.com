@@ -23,7 +23,7 @@ export const Time: React.FC<React.ComponentProps<"div">> = (props) => {
 					</SubtleLink>
 				</span>
 			</div>
-			<span suppressHydrationWarning className="z-30 select-none">
+			{/* <span suppressHydrationWarning className="z-30 select-none">
 				{timeDifference === 0 ? (
 					<>Within the same timezone.</>
 				) : (
@@ -31,7 +31,7 @@ export const Time: React.FC<React.ComponentProps<"div">> = (props) => {
 						timeDifference !== 1 && timeDifference !== -1 ? "s" : ""
 					} ${timeDifference > 0 ? "ahead" : "behind"}.`
 				)}
-			</span>
+			</span> */}
 		</VeinyCard>
 	);
 };
