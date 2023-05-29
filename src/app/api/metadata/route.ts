@@ -1,7 +1,6 @@
 import { getMetadata } from "~/metadata";
 
-export const runtime = "edge";
-export const revalidate = 1;
+export const revalidate = 5;
 
 export async function GET() {
 	return new Response(JSON.stringify(await getMetadata()), {
