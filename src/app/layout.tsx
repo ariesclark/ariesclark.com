@@ -5,12 +5,12 @@ import { Metadata } from "next";
 
 import { twitterUsername } from "~/config";
 import { SWRConfig } from "~/components/swr-config";
+import { getMetadata } from "~/metadata";
 
 import { Cursor } from "./cursor";
 import { ClientScripts } from "./client-scripts";
 
 import "~/styles/globals.css";
-import { getMetadata } from "~/metadata";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });

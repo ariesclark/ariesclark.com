@@ -8,7 +8,7 @@ import { useDate } from "~/hooks/use-date";
 import { VeinyCard } from "./veiny-card";
 
 export const Time: React.FC<React.ComponentProps<"div">> = (props) => {
-	const { date, timeZone, timeDifference } = useDate();
+	const { date, timeZone } = useDate();
 
 	return (
 		<VeinyCard {...props} veinStyle={{ top: "over" }}>
