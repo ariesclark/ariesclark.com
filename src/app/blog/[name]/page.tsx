@@ -34,7 +34,7 @@ export default async function BlogPostPage({ params: { name } }: { params: { nam
 	return (
 		<div className="h-screen w-full overflow-y-auto">
 			<div className="flex items-center justify-center p-8 py-16 md:py-64">
-				<div className="flex max-w-2xl flex-col gap-8">
+				<div className="flex max-w-2xl cursor-text flex-col gap-8">
 					<h1 className="font-inter text-5xl font-bold md:text-8xl">Burnout</h1>
 					<div className="flex flex-col">
 						<h2 className="inline-flex gap-4 font-inter text-2xl font-light">

@@ -5,7 +5,8 @@ import { useEffect } from "react";
 
 const cursorAtom = atom({
 	x: Number.MIN_SAFE_INTEGER,
-	y: Number.MIN_SAFE_INTEGER
+	y: Number.MIN_SAFE_INTEGER,
+	size: 16
 });
 
 export const Cursor: React.FC = () => {
@@ -13,7 +14,11 @@ export const Cursor: React.FC = () => {
 
 	useEffect(() => {
 		function onMouseMove(event: MouseEvent) {
-			setCursor({ x: event.x, y: event.y });
+			const size =
+				event.target instanceof Element && getComputedStyle(event.target).cursor === "text"
+					? 0
+					: 16;
+			setCursor({ x: event.x, y: event.y, size });
 		}
 
 		function onResize() {
@@ -35,7 +40,10 @@ export const Cursor: React.FC = () => {
 			className="pointer-events-none absolute z-50 hidden will-change-transform md:flex"
 			style={{ transform: `translate(${cursor.x}px,${cursor.y}px)` }}
 		>
-			<div className="ml-[-50%] mt-[-50%] h-64 w-64 animate-cursor-in rounded-full backdrop-hue-rotate-180 backdrop-invert" />
+			<div
+				className="ml-[-50%] mt-[-50%] animate-cursor-in rounded-full backdrop-hue-rotate-180 backdrop-invert transition-all"
+				style={{ width: `${cursor.size}rem`, height: `${cursor.size}rem` }}
+			/>
 		</div>
 	);
 };
