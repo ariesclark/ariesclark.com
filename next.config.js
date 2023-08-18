@@ -1,5 +1,8 @@
 /** @type {import("next").NextConfig} */
-module.exports = {
+const nextConfig = {
+	experimental: {
+		mdxRs: true
+	},
 	reactStrictMode: true,
 	images: {
 		domains: ["pbs.twimg.com", "i.scdn.co", "avatars.githubusercontent.com"]
@@ -58,3 +61,6 @@ module.exports = {
 		];
 	}
 };
+
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);
