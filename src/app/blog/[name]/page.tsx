@@ -52,6 +52,7 @@ export default async function BlogPostPage({ params: { name } }: { params: { nam
 						</span>
 					</div>
 					<div className="flex flex-col gap-4 text-lg">
+						{/* @ts-expect-error: ? */}
 						<MDXRemote
 							source={markdown}
 							components={{
