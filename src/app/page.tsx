@@ -1,213 +1,94 @@
-"use client";
+import { Menu } from "lucide-react";
+import { FC } from "react";
 
-import {
-	ArrowLongLeftIcon,
-	ArrowLongRightIcon,
-	ArrowTrendingDownIcon
-} from "@heroicons/react/24/outline";
-import ms from "ms";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { age } from "~/environment";
 
-import { connections } from "~/config";
-import { useGlobalState } from "~/hooks/use-global-state";
-import { useMetadata } from "~/hooks/use-metadata";
-
-import { ExperienceAside } from "./experience-aside";
 import { Heart } from "./heart";
-import { IntroductionScreen } from "./introduction-screen";
-import { SpotifyCard } from "./spotify";
-import { Time } from "./time";
+import { NavigationItem } from "./navigation-item";
+import { Link } from "./link";
+import { Marquee } from "./marquee";
+import { SocialList } from "./social-list";
+import { Contact } from "./contact";
+import { Button } from "./button";
+import { WorkAndExperience } from "./experience";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
-export type AsideType = "preview" | "left" | "center" | "right";
+export const dynamic = "force-static";
 
-type AsideButtonProps = Omit<React.ComponentProps<"button">, "type"> & {
-	type: Exclude<AsideType, "center">;
-};
-
-const AsideButton: React.FC<AsideButtonProps> = ({ type, ...props }) => {
-	const Icon = type === "left" ? ArrowLongLeftIcon : ArrowLongRightIcon;
-
+const Header: FC = () => {
 	return (
-		<button
-			type="button"
-			{...props}
-			className={twMerge(
-				"absolute top-0 flex h-full justify-center px-8 transition-opacity md:items-center md:p-16",
-				type === "left" ? "left-0" : "right-0",
-				props.className
-			)}
-		>
-			<div
-				className={twMerge(
-					"relative flex h-fit flex-row-reverse items-center gap-8 rounded-xl py-8",
-					type === "left" ? "flex-row" : "flex-row-reverse"
-				)}
-			>
-				<Icon
-					className={twMerge(
-						"h-10 w-10",
-						type === "left" ? "animate-bounce-left" : "animate-bounce-right"
-					)}
-				/>
-				<span className="text-lg">{type === "left" ? "Aries Clark" : "Jobs & experience"}</span>
+		<header className="mb-2 flex items-center justify-between gap-4 rounded-lg bg-neutral-100 px-6 py-4 uppercase text-neutral-800 dark:bg-neutral-900 dark:text-white lg:px-16 lg:py-8">
+			<Link className="text-lg font-medium" href="/">
+				Aries Clark
+			</Link>
+			<div className="flex items-center gap-8">
+				<div className="hidden items-center gap-4 lg:flex">
+					<NavigationItem>About me</NavigationItem>
+					<NavigationItem href="/#work">Work & Experiences</NavigationItem>
+					<Popover>
+						<PopoverTrigger className="uppercase">Articles</PopoverTrigger>
+						<PopoverContent className="w-96">
+							<div className="flex flex-col gap-4">
+								<div className="flex flex-col gap-2">
+									<span className="font-medium">✨ Coming soon!</span>
+									<p className="opacity-85">
+										I don&apos;t have any articles yet, but I&apos;m planning to
+										write some in the future.
+									</p>
+								</div>
+								<Button asChild>
+									<Link href="/#contact">Interested?</Link>
+								</Button>
+							</div>
+						</PopoverContent>
+					</Popover>
+				</div>
+				<div className="flex items-center gap-4">
+					<Button asChild>
+						<Link href="/#contact">Let&apos;s Chat</Link>
+					</Button>
+					<Menu className="size-6 lg:hidden" />
+				</div>
 			</div>
-		</button>
+		</header>
 	);
 };
 
-const minuteInMs = 60000;
-
-export default function RootIndexPage() {
-	const [{ loaded }] = useGlobalState();
-	const [aside, setAside] = useState<AsideType>("preview");
-
-	const { heartrate, alive, spotify } = useMetadata();
-
-	const [artificialBoost, setArtificialBoost] = useState(0);
-	const [highestArtificialBoost, setHighestArtificialBoost] = useState(0);
-
-	const bpm = heartrate.value + artificialBoost;
-
-	useEffect(() => {
-		setArtificialBoost(0);
-	}, [heartrate.measuredAt]);
-
-	useEffect(() => {
-		if (loaded) setAside("center");
-	}, [loaded]);
-
-	const timeSinceMeasure = Math.abs(heartrate.measuredAt - Date.now());
-
+export default function Home() {
 	return (
-		<>
-			<IntroductionScreen />
-			<div
-				className={twMerge(
-					"pointer-events-none fixed left-0 top-0 h-full backdrop-hue-rotate-180 backdrop-invert transition-all duration-300",
-					aside === "right" || aside === "preview" ? "-translate-x-full" : "",
-					aside === "center" ? "z-10 w-screen-1/2 delay-300" : "-z-10 w-full"
-				)}
-			/>
-			<AsideButton
-				className={twMerge("transition-all", aside === "center" && "pointer-events-none opacity-0")}
-				type="left"
-				onClick={() => setAside("center")}
-			/>
-			<AsideButton
-				className={twMerge("transition-all", aside === "right" && "pointer-events-none opacity-0")}
-				type="right"
-				onClick={() => setAside((aside) => (aside === "left" ? "center" : "right"))}
-			/>
-			<div
-				className={twMerge(
-					"pointer-events-none flex h-screen w-full flex-col items-center justify-center gap-32 font-nunito transition-transform duration-300",
-					loaded ? "opacity-100" : "opacity-0",
-					aside === "right" ? "-translate-x-full" : ""
-				)}
-			>
-				<div className="relative flex w-full max-w-2xl flex-col items-center gap-8 py-32">
-					<div
-						className={twMerge(
-							"mb-8 flex select-none flex-col gap-4 font-inter transition-opacity",
-							aside === "center" ? "delay-300" : "opacity-0"
-						)}
-					>
-						<h1 className="text-6xl font-bold md:text-8xl">Aries Clark</h1>
-						<h2 className="text-2xl md:text-4xl">Software Engineer</h2>
-					</div>
-					<div className="relative mb-16 flex h-full w-full max-w-md grid-cols-[1fr,max-content,1fr] flex-col items-center justify-center md:mb-0 md:grid">
-						<div
-							className={twMerge(
-								"flex w-fit gap-4 text-white-100 md:z-20 md:flex-col md:text-black-100",
-								aside === "center" ? "pointer-events-auto delay-500 duration-500" : "opacity-0"
-							)}
-						>
-							{connections.map(({ name, Icon, href }) => (
-								<Link href={href} key={name} target="_blank">
-									<Icon className="h-8 w-8" />
-								</Link>
-							))}
-						</div>
-						<Heart
-							artificialBoost={artificialBoost}
-							bpm={bpm}
-							className={twMerge("z-20 mt-8", aside === "center" && "pointer-events-auto")}
-							onClick={() => {
-								setArtificialBoost((artificialBoost) => {
-									const newArtificialBoost = artificialBoost + 1;
-									setHighestArtificialBoost((highestArtificialBoost) => {
-										return newArtificialBoost > highestArtificialBoost
-											? newArtificialBoost
-											: highestArtificialBoost;
-									});
-
-									return newArtificialBoost;
-								});
-							}}
-						/>
-						<div
-							className={twMerge(
-								"absolute -bottom-16 right-2 flex w-fit rotate-12 flex-col-reverse items-end gap-2 transition-all md:-top-6 md:bottom-auto md:right-0 md:w-52 md:flex-col md:gap-4",
-								aside === "center" ? "delay-1000 duration-500" : "pointer-events-none opacity-0"
-							)}
-						>
-							<div className="flex w-full shrink-0 flex-col">
-								<span className="select-none text-sm md:text-lg">
-									{highestArtificialBoost >= 10
-										? "Are you trying to kill me!?"
-										: alive
-										? "I'm still alive, somehow."
-										: "I might be dead..?"}
-								</span>
-								<div className="flex select-none items-center gap-2 text-xs">
-									{timeSinceMeasure < minuteInMs && (
-										<span className="hidden rounded-md bg-gradient-to-br from-red-100 to-red-300 px-2 py-1 md:inline">
-											LIVE
-										</span>
-									)}
-									<span>
-										{timeSinceMeasure < minuteInMs ? (
-											<>Accurate within {ms(timeSinceMeasure, { long: true })}</>
-										) : (
-											<>Last measured {ms(timeSinceMeasure, { long: true })} ago</>
-										)}
-										.
-									</span>
+		<div className="mx-auto max-w-[1920px] grow">
+			<Header />
+			<div className="flex min-h-svh w-full flex-col rounded-t-lg bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-white 2xl:px-64">
+				<div className="flex h-full grow flex-col items-center justify-center px-6 py-12 lg:px-16 lg:py-8 lg:pb-16">
+					<div className="pointer-events-none flex size-full grow flex-col items-center gap-x-16 gap-y-24 lg:-translate-y-32 lg:flex-row lg:justify-between">
+						<div className="pointer-events-auto flex flex-col-reverse gap-8 lg:flex-row lg:items-center lg:gap-16">
+							<SocialList />
+							<div className="flex flex-col gap-4">
+								<div className="flex flex-col">
+									<h1 className="text-3xl font-bold lg:text-6xl">
+										Aries Clark
+									</h1>
+									<p className="text-xl brightness-75">
+										Software Engineer & Consultant
+									</p>
 								</div>
+								<p className="w-full max-w-xl text-lg font-thin brightness-90">
+									{age()}-year-old software engineer, consultant. I&apos;m
+									passionate about building products and platforms that enable
+									creators and entrepreneurs to bring their ideas to life.
+								</p>
 							</div>
-							<ArrowTrendingDownIcon
-								className="mr-auto w-10 rotate-180 md:mr-4 md:rotate-90"
-								strokeWidth={1}
-							/>
 						</div>
-					</div>
-					<div className="absolute z-10 mt-96 h-full w-8 bg-gradient-to-r from-red-100 to-red-300" />
-					<div className="relative">
-						{spotify && (
-							<div
-								className={twMerge(
-									"absolute right-[-26rem] z-10 hidden md:flex",
-									aside === "center" ? "pointer-events-auto delay-1000 duration-500" : "opacity-0"
-								)}
-							>
-								<SpotifyCard />
-							</div>
-						)}
-						<Time
-							className={twMerge(
-								"transition-all",
-								aside === "center" ? "pointer-events-auto delay-300" : "opacity-0"
-							)}
-						/>
+						<div className="pointer-events-auto flex flex-col gap-8">
+							<Heart />
+							{/* <Playback /> */}
+						</div>
 					</div>
 				</div>
+				<Marquee />
 			</div>
-			<ExperienceAside
-				aside={aside}
-				className={twMerge(aside === "right" ? "opacity-100" : "pointer-events-none")}
-			/>
-		</>
+			<WorkAndExperience />
+			<Contact />
+		</div>
 	);
 }

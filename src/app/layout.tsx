@@ -1,24 +1,23 @@
-import React from "react";
-import { Inter, Nunito } from "next/font/google";
+import { Prompt } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import { Metadata } from "next";
 
-import { twitterUsername } from "~/config";
-import { SWRConfig } from "~/components/swr-config";
-import { getMetadata } from "~/metadata";
+import { origin, twitterUsername } from "~/environment";
+import { AnimationProvider } from "~/framer";
 
-import { Cursor } from "./cursor";
-import { ClientScripts } from "./client-scripts";
+import { AnalyticProvider } from "./analytics";
 
-import "~/styles/globals.css";
+import type { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
+import "./globals.css";
+
+const inter = Prompt({
+	subsets: ["latin"],
+	weight: ["300", "400", "500", "600", "700"]
+});
 
 export const metadata: Metadata = {
 	title: "Aries Clark",
-	description: "Canadian software engineer",
-	viewport: "width=device-width, initial-scale=1.0",
+	metadataBase: origin,
 	twitter: {
 		card: "summary_large_image",
 		site: twitterUsername,
@@ -30,32 +29,26 @@ export const metadata: Metadata = {
 	}
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	const metadata = await getMetadata();
-
+export default function RootLayout({
+	children
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
 	return (
-		<html lang="en">
-			<head>
-				<ClientScripts />
-			</head>
-			<SWRConfig
-				value={{
-					fallback: {
-						metadata
-					}
-				}}
-			>
+		<html
+			className="dark [font-size:13px] md:[font-size:14px] lg:[font-size:16px]"
+			lang="en"
+		>
+			<AnimationProvider>
 				<body
 					className={twMerge(
-						"relative h-screen w-screen overflow-hidden bg-black-200 text-white-100",
-						inter.variable,
-						nunito.variable
+						"flex min-h-svh w-svw flex-col overflow-x-hidden bg-pink-400 p-2",
+						inter.className
 					)}
 				>
-					<Cursor />
-					{children}
+					<AnalyticProvider>{children}</AnalyticProvider>
 				</body>
-			</SWRConfig>
+			</AnimationProvider>
 		</html>
 	);
 }
