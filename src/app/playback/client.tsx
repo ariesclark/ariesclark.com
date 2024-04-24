@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import useSWR from "swr";
 
-import { Playback } from "~/upstream/spotify";
+import type { Playback } from "~/upstream/spotify";
 
 export const InteractivePlayback: FC<{
 	initialValue: Playback | null;

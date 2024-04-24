@@ -1,9 +1,10 @@
 "use client";
 
-import { FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Link } from "./link";
+
+import type { FC, PropsWithChildren } from "react";
 
 export const NavigationItem: FC<
 	PropsWithChildren<{ href?: string; disabled?: boolean }>

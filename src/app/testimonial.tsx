@@ -1,5 +1,6 @@
-import Image, { StaticImageData } from "next/image";
-import { FC, PropsWithChildren } from "react";
+import Image, { type StaticImageData } from "next/image";
+
+import type { FC, PropsWithChildren } from "react";
 
 export const TestimonialAuthor: FC<
 	PropsWithChildren<{ picture: string | StaticImageData }>
@@ -21,7 +22,7 @@ export const TestimonialAuthorAffiliation: FC<PropsWithChildren> = ({
 }) => <span className="text-sm brightness-75">{children}</span>;
 
 export const TestimonialContent: FC<PropsWithChildren> = ({ children }) => (
-	<span className="font-thin">“{children}”</span>
+	<span className="font-light">“{children}”</span>
 );
 
 export const Testimonial: FC<PropsWithChildren> = ({ children }) => {

@@ -1,5 +1,4 @@
 import { Menu } from "lucide-react";
-import { FC } from "react";
 
 import { age } from "~/environment";
 
@@ -12,6 +11,8 @@ import { Contact } from "./contact";
 import { Button } from "./button";
 import { WorkAndExperience } from "./experience";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+
+import type { FC } from "react";
 
 export const dynamic = "force-static";
 
@@ -72,7 +73,7 @@ export default function Home() {
 										Software Engineer & Consultant
 									</p>
 								</div>
-								<p className="w-full max-w-xl text-lg font-thin brightness-90">
+								<p className="w-full max-w-xl text-lg font-light brightness-90">
 									{age()}-year-old software engineer, consultant. I&apos;m
 									passionate about building products and platforms that enable
 									creators and entrepreneurs to bring their ideas to life.

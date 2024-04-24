@@ -12,7 +12,7 @@ import "./globals.css";
 
 const inter = Prompt({
 	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"]
+	weight: ["300", "400", "700"]
 });
 
 export const metadata: Metadata = {

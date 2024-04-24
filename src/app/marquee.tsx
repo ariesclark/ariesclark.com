@@ -1,5 +1,6 @@
-import { FC, PropsWithChildren } from "react";
-
+import ThomalonePicture from "~/assets/testimonials/thomalone.png";
+import LingiePicture from "~/assets/testimonials/lingie.png";
+import RineyPicture from "~/assets/testimonials/riney.png";
 import AnthonyTanPicture from "~/assets/testimonials/anthony-tan.jpg";
 
 import {
@@ -9,15 +10,15 @@ import {
 	TestimonialContent
 } from "./testimonial";
 
+import type { FC, PropsWithChildren } from "react";
+
 const marqueeItems = [
 	<Testimonial key={null}>
 		<TestimonialContent>
 			We have the wonderful Aries to thank for the website, it&apos;s much more
 			convenient than having to [onboard users manually].
 		</TestimonialContent>
-		<TestimonialAuthor picture="https://cdn.discordapp.com/avatars/398136278568140802/1c5995a52f7b41720ea854d4349aac5d.webp">
-			Thomalone
-		</TestimonialAuthor>
+		<TestimonialAuthor picture={ThomalonePicture}>Thomalone</TestimonialAuthor>
 	</Testimonial>,
 	<Testimonial key={null}>
 		<TestimonialContent>
@@ -35,7 +36,7 @@ const marqueeItems = [
 			[Aries] made this super possible, everyone getting a clean interface, and
 			things just going in without (much) assistance if any.
 		</TestimonialContent>
-		<TestimonialAuthor picture="https://cdn.discordapp.com/avatars/90976937261961216/ec3e5942eaead727ddaf6be5c476c6a3.webp">
+		<TestimonialAuthor picture={LingiePicture}>
 			Lingie
 			<TestimonialAuthorAffiliation>Duskview City</TestimonialAuthorAffiliation>
 		</TestimonialAuthor>
@@ -44,7 +45,7 @@ const marqueeItems = [
 		<TestimonialContent>
 			Aries is truly amazing. I need everyone to know that.
 		</TestimonialContent>
-		<TestimonialAuthor picture="https://cdn.discordapp.com/avatars/202163004245016586/2205046e530dd362b2e8eeb5e829f448.webp?size=1024&format=webp&width=0&height=400">
+		<TestimonialAuthor picture={RineyPicture}>
 			Riney
 			<TestimonialAuthorAffiliation>Duskview City</TestimonialAuthorAffiliation>
 		</TestimonialAuthor>

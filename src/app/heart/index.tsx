@@ -1,7 +1,7 @@
 "use client";
 
 import { m, AnimatePresence } from "framer-motion";
-import { FC, useEffect, useRef, useState } from "react";
+import { type FC, useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import ms from "ms";
 
@@ -11,7 +11,7 @@ import { getHeartrate } from "~/upstream/pulsoid-action";
 import { useCursor } from "~/hooks/cursor";
 
 import { TweenNumber } from "./tweet-number";
-import { Indicator, IndicatorProps } from "./indicator";
+import { Indicator, type IndicatorProps } from "./indicator";
 
 export const Heart: FC = () => {
 	const cursor = useCursor();
@@ -191,7 +191,7 @@ export const Heart: FC = () => {
 										<TweenNumber value={increment} />
 									</span>
 								)}
-								<span className="text-3xl font-medium">
+								<span className="text-3xl font-bold">
 									<TweenNumber value={bpm} /> bpm
 								</span>
 								<span className="text-sm">

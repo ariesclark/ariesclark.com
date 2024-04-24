@@ -1,7 +1,8 @@
 "use client";
 
 import { LazyMotion } from "framer-motion";
-import { FC, PropsWithChildren } from "react";
+
+import type { FC, PropsWithChildren } from "react";
 
 const loadFeatures = () =>
 	import("framer-motion").then((module) => module.domAnimation);

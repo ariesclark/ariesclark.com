@@ -1,5 +1,5 @@
 import { useMotionValue, useTransform, m } from "framer-motion";
-import { FC, useEffect } from "react";
+import { type FC, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 export interface IndicatorProps {

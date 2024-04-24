@@ -3,6 +3,11 @@ const config = {
 	content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
 	darkMode: "class",
 	theme: {
+		fontWeight: {
+			light: 300,
+			medium: 400,
+			bold: 700
+		},
 		extend: {
 			animation: {
 				marquee: "marquee 25s linear infinite",

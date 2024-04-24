@@ -1,5 +1,5 @@
 import { useInView, useMotionValue, useSpring } from "framer-motion";
-import { FC, memo, useEffect, useMemo, useRef } from "react";
+import { type FC, memo, useEffect, useMemo, useRef } from "react";
 
 import { toOptionalFixed } from "~/utils/number";
 
@@ -47,3 +47,5 @@ export const TweenNumber: FC<
 		</span>
 	);
 });
+
+TweenNumber.displayName = "TweenNumber";

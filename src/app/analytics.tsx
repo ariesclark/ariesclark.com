@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import dynamic from "next/dynamic";
 import { usePathname, useSearchParams } from "next/navigation";
-import { FC, PropsWithChildren, use, useEffect } from "react";
+import { type FC, type PropsWithChildren, use, useEffect } from "react";
 
 import { googleAnalyticsId, posthogHost, posthogKey } from "~/environment";
 
@@ -32,6 +32,7 @@ const PosthogProvider = dynamic(
 	async () => {
 		const { posthog, PostHogProvider } = (await posthogPromise)!;
 
+		// eslint-disable-next-line react/display-name
 		return ({ children }: PropsWithChildren) => (
 			<PostHogProvider client={posthog}>{children}</PostHogProvider>
 		);

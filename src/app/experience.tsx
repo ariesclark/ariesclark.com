@@ -40,7 +40,7 @@ export const WorkAndExperience: FC = () => {
 											{logo ? (
 												<Image alt={name} className="h-10 w-fit" src={logo} />
 											) : (
-												<span className="inline-flex whitespace-nowrap text-xl font-semibold">
+												<span className="inline-flex whitespace-nowrap text-xl font-bold">
 													{name}
 												</span>
 											)}

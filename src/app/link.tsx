@@ -1,7 +1,7 @@
 "use client";
 
-import LinkPrimitive, { LinkProps } from "next/link";
-import { ComponentProps, FC, useRef } from "react";
+import LinkPrimitive, { type LinkProps } from "next/link";
+import { type ComponentProps, type FC, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { random } from "~/utils/number";

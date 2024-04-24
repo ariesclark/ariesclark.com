@@ -6,5 +6,8 @@ module.exports = {
 		"@ariesclark/eslint-config",
 		"@ariesclark/eslint-config/next",
 		"@ariesclark/eslint-config/tailwindcss"
-	]
+	],
+	rules: {
+		"@typescript-eslint/no-non-null-assertion": "off"
+	}
 };
